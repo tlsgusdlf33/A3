@@ -1,7 +1,87 @@
 {
- "cards": {},
+ "cards": {
+  "english": {
+   "e005": {
+    "due": "2026-09-27",
+    "ease": 2.5,
+    "id": "e005",
+    "interval": 0,
+    "lapses": 0,
+    "last": null,
+    "reps": 0,
+    "served": "2026-09-20"
+   },
+   "e016": {
+    "due": "2026-09-27",
+    "ease": 2.5,
+    "id": "e016",
+    "interval": 0,
+    "lapses": 0,
+    "last": null,
+    "reps": 0,
+    "served": "2026-09-20"
+   },
+   "e056": {
+    "due": "2026-09-27",
+    "ease": 2.5,
+    "id": "e056",
+    "interval": 0,
+    "lapses": 0,
+    "last": null,
+    "reps": 0,
+    "served": "2026-09-20"
+   },
+   "e057": {
+    "due": "2026-09-27",
+    "ease": 2.5,
+    "id": "e057",
+    "interval": 0,
+    "lapses": 0,
+    "last": null,
+    "reps": 0,
+    "served": "2026-09-20"
+   },
+   "o017": {
+    "due": "2026-09-27",
+    "ease": 2.5,
+    "id": "o017",
+    "interval": 0,
+    "lapses": 0,
+    "last": null,
+    "reps": 0,
+    "served": "2026-09-20"
+   },
+   "o025": {
+    "due": "2026-09-27",
+    "ease": 2.5,
+    "id": "o025",
+    "interval": 0,
+    "lapses": 0,
+    "last": null,
+    "reps": 0,
+    "served": "2026-09-20"
+   },
+   "o031": {
+    "due": "2026-09-27",
+    "ease": 2.5,
+    "id": "o031",
+    "interval": 0,
+    "lapses": 0,
+    "last": null,
+    "reps": 0,
+    "served": "2026-09-20"
+   }
+  }
+ },
  "meta": {},
- "runs": [],
+ "runs": [
+  {
+   "at": "2026-09-20T11:06:37+09:00",
+   "ok": true,
+   "summary": "말하기 2 · 표현 5",
+   "task": "english"
+  }
+ ],
  "schema": 1,
  "seen": {}
 }

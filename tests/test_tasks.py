@@ -67,17 +67,45 @@ def test_exam_flags_provisional_date(config, store):
     assert "추정" in result.message.body
 
 
-def test_english_serves_and_records(config, store):
-    config.data["english"]["daily_cards"] = 5
+def test_english_serves_both_kinds_by_their_own_quota(config, store):
+    config.data["english"]["speaking_cards"] = 2
+    config.data["english"]["word_cards"] = 5
     result = tasks.get("english")(config, store)
-    assert len(result.extras["ids"]) == 5
-    assert len(store.deck("english")) == 5
+    assert len(result.extras["ids"]) == 7
+    assert len(store.deck("english")) == 7
+    assert "말하기 2" in result.summary and "표현 5" in result.summary
+
+
+def test_speaking_cards_are_never_crowded_out_by_words(config, store):
+    """섞어서 뽑으면 표현 카드가 말하기를 밀어낸다. 오픽에서는 치명적이다."""
+    config.data["english"]["speaking_cards"] = 2
+    config.data["english"]["word_cards"] = 20
+    body = tasks.get("english")(config, store).message.body
+    assert body.count("🎤") == 2
+
+
+def test_speaking_card_tells_you_to_speak_before_reading(config, store):
+    config.data["english"]["speaking_cards"] = 1
+    config.data["english"]["word_cards"] = 0
+    body = tasks.get("english")(config, store).message.body
+    assert "소리 내어" in body
+    assert "뼈대" in body and "쓸 표현" in body
 
 
 def test_english_tag_filter(config, store):
     config.data["english"]["tags"] = ["실무-도장"]
     result = tasks.get("english")(config, store)
     assert result.extras["ids"]
+
+
+def test_english_tag_filter_can_isolate_roleplay(config, store):
+    """롤플레이만 집중 훈련하고 싶을 때."""
+    config.data["english"]["tags"] = ["오픽-롤플레이"]
+    config.data["english"]["speaking_cards"] = 3
+    config.data["english"]["word_cards"] = 5
+    result = tasks.get("english")(config, store)
+    assert len(result.extras["ids"]) == 3  # word 카드가 없는 태그
+    assert all(i.startswith("o") for i in result.extras["ids"])
 
 
 def test_brief_reports_progress(config, store):
@@ -136,3 +164,34 @@ def test_deck_progresses_even_if_the_user_never_grades(config, store, monkeypatc
         monkeypatch.setattr(exam_mod.util, "today", lambda d=day: d)
         seen |= set(tasks.get("exam")(config, store).extras["ids"])
     assert len(seen) == 90, f"30일 x 3문제인데 {len(seen)}문항만 접함"
+
+
+def test_english_deck_is_fully_covered_in_two_months(config, store, monkeypatch):
+    """시험 전까지 덱을 한 바퀴는 돌아야 한다."""
+    import datetime as dt
+
+    from a3.tasks import english as english_mod
+
+    config.data["english"]["speaking_cards"] = 2
+    config.data["english"]["word_cards"] = 5
+    for i in range(60):
+        day = dt.date(2026, 9, 20) + dt.timedelta(days=i)
+        monkeypatch.setattr(english_mod.util, "today", lambda d=day: d)
+        tasks.get("english")(config, store)
+    from a3.tasks.decks import load_deck
+
+    assert len(store.deck("english")) == len(load_deck("english_deck.yaml")["cards"])
+
+
+def test_english_notification_fits_in_a_push_message(config, store, monkeypatch):
+    """ntfy 본문 한도(3500자)를 넘으면 뒷부분이 잘려 나간다."""
+    import datetime as dt
+
+    from a3.notify import NTFY_BODY_LIMIT
+    from a3.tasks import english as english_mod
+
+    for i in range(60):
+        day = dt.date(2026, 9, 20) + dt.timedelta(days=i)
+        monkeypatch.setattr(english_mod.util, "today", lambda d=day: d)
+        result = tasks.get("english")(config, store)
+        assert len(result.message.body) < NTFY_BODY_LIMIT

@@ -147,6 +147,18 @@ def cmd_show(args) -> int:
         for step in frames.get(card.get("frame_as") or card["category"], []):
             print(f"  {step}")
         print("\n키워드: " + " · ".join(card.get("keywords", [])))
+    elif card.get("kind") == "speaking":
+        print(f"[{card['tag']}]  {card['id']}  · {card.get('seconds', 90)}초")
+        print(f"🎤 {card['q']}")
+        print(f"   ({card['ko']})\n")
+        print("뼈대")
+        for i, step in enumerate(card.get("structure", []), 1):
+            print(f"  {i}) {step}")
+        print("\n쓸 표현")
+        for phrase in card.get("phrases", []):
+            print(f"  · {phrase}")
+        if card.get("tip"):
+            print(f"\n💡 {card['tip']}")
     else:
         print(f"[{card['tag']}]  {card['id']}")
         print(f"{card['front']}\n  → {card['back']}")

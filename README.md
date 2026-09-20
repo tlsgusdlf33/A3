@@ -11,7 +11,7 @@ PC를 켜 둘 필요 없이 GitHub이 대신 돌려준다.
 🏗️ 건설기계기술사 D-139        Q. 유압 어큐뮬레이터의 기능은?
 📚 오늘의 학습량               — 답안 전개 —
   기술사: 복습 2 · 진도 21/120   I. 개요 — 정의, 파스칼 원리…
-  영어:  복습 5 · 진도 49/110   II. 회로 구성 및 작동원리…
+  영어:  복습 5 · 진도 49/134   II. 회로 구성 및 작동원리…
 ```
 
 ## 무엇을 해 주나
@@ -20,13 +20,29 @@ PC를 켜 둘 필요 없이 GitHub이 대신 돌려준다.
 |---|---|
 | `brief` | D-day, 오늘 학습량, 날씨, 최근 실행 이력을 한 화면에 |
 | `exam` | **건설기계기술사 120문항**을 간격 반복으로 매일 몇 문제씩. 분야별 답안 전개 틀 + 채점 키워드 동봉 |
-| `english` | **엔지니어 실무영어 + 시험 영어 110장**. 펌프·도장·검사·발주처 메일 표현이 그대로 들어 있음 |
+| `english` | **OPIc 말하기 훈련 54문항 + 표현 80장**. 매일 2문항은 입으로 말하고, 5개 표현은 외운다 |
 | `radar` | 건설기계 규제/기술 동향, 부업·외주·지원사업 소식 중 **처음 보는 것만** 골라서 |
 | `selfupdate` | 원격 저장소에 새 코드가 올라오면 스스로 당겨오고 무엇이 바뀌었는지 알림 |
 
-문제은행은 Google Drive의 「건설기계기술사」 시트(예상문제 120선)를 구조화한 것이다.
+기술사 문제은행은 Google Drive의 「건설기계기술사」 시트(예상문제 120선)를 구조화한 것이다.
 11개 분야(일반 기계 지식 / 유압 / 엔진·파워트레인 / 전기·제어 / 기계 유지관리 /
 안전 / 공압 / 특수 건설기계 / 환경 / 문제 해결 / 최근 빈출)를 모두 덮는다.
+
+### 영어는 OPIc 기준으로 짰다
+
+오픽은 말하기 시험이라 카드를 눈으로 읽어서는 점수가 오르지 않는다. 그래서 카드가 두 종류다.
+
+- **말하기 카드(54)** — 영어 질문 + 한국어 해석 + ⏱제한시간을 먼저 준다.
+  *소리 내어 말한 뒤에* 답변 뼈대 3단계와 쓸 표현을 확인한다.
+  8개 유형(자기소개 / 직업 / 묘사 / 습관 / 경험 / 비교 / 롤플레이 / 돌발)을 모두 덮는다.
+- **표현 카드(80)** — 담화 표지·시간 벌기 20개 + 펌프·도장·검사·발주처 메일 실무 영어 60개.
+
+실무 영어를 버리지 않은 이유가 있다. 배경설문에서 '직장인'을 고르면 **직업 문항이 반드시 나오고**,
+그때 쓸 재료가 바로 그 어휘들이다. 「장비가 고장 나서 공급업체에 전화하는 롤플레이」처럼
+본인 실무가 그대로 문제로 나오는 카드도 넣어 뒀다.
+
+말하기 quota는 표현과 분리돼 있다. 한 통에 섞어 뽑으면 표현 카드가 말하기를 밀어내는데,
+오픽에서 그건 치명적이라 테스트로 막아 뒀다.
 
 ## 5분 설치
 
@@ -68,7 +84,8 @@ python -m a3 run radar --dry-run   # 알림 안 보내고 결과만 확인
 python -m a3 status                # 진도 확인
 python -m a3 show exam 013         # 특정 문제 다시 보기
 python -m a3 grade exam 013 4      # 채점 (0~5) → 다음 복습일 자동 계산
-python -m a3 grade english e018 2
+python -m a3 show english o063     # 오픽 롤플레이 카드 보기
+python -m a3 grade english o063 3
 
 python -m a3 tasks                 # 태스크 목록
 ```
@@ -98,8 +115,11 @@ exam:
   categories: ["유압 시스템"]   # 약한 분야만 집중 공략할 때
 
 english:
-  daily_cards: 7
-  tags: ["실무-이메일"]          # 해외 발주처 메일 쓰는 주간이면
+  name: OPIc
+  target_level: IH
+  speaking_cards: 2     # 하루에 입으로 말해 볼 오픽 문항
+  word_cards: 5         # 하루에 외울 표현
+  tags: ["오픽-롤플레이", "오픽-돌발"]   # 시험 직전 약점만 집중 공략
 
 brief:
   latitude: 37.5665     # 사는 곳 좌표
@@ -134,17 +154,19 @@ brief:
 ## 내용 늘리기
 
 - 기술사 문제 추가: [`a3/data/exam_deck.yaml`](a3/data/exam_deck.yaml)의 `cards`에 한 줄
-- 영어 표현 추가: [`a3/data/english_deck.yaml`](a3/data/english_deck.yaml)
+- 오픽/영어 카드 추가: [`a3/data/english_deck.yaml`](a3/data/english_deck.yaml)
+  (`kind: speaking` 이면 말하기 카드. `structure` 3단계와 `phrases` 3개가 필수)
 - 레이더 키워드/피드: `config.yaml`의 `radar`
 
-덱은 테스트가 구조를 검사한다 (`python -m pytest tests -q`). 키워드 3개 미만이거나
-답안 전개 틀이 없는 분야를 넣으면 CI가 잡는다.
+덱은 테스트가 구조를 검사한다 (`python -m pytest tests -q`). 기술사 카드에 키워드가
+3개 미만이거나, 말하기 카드에 뼈대가 3단계 미만이거나, 오픽 8개 유형 중 하나가
+비면 CI가 잡는다.
 
 ## 개발
 
 ```bash
 pip install -r requirements.txt pytest
-python -m pytest tests -q          # 284개
+python -m pytest tests -q          # 315개
 ```
 
 ## 구조
@@ -157,5 +179,5 @@ a3/
 ├── srs.py          SM-2 간격 반복
 ├── notify.py       ntfy / telegram / discord / console
 ├── tasks/          brief · exam · english · radar · selfupdate
-└── data/           exam_deck.yaml (120) · english_deck.yaml (110)
+└── data/           exam_deck.yaml (120문항) · english_deck.yaml (말하기 54 + 표현 80)
 ```

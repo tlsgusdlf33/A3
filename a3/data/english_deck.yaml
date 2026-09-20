@@ -1,10 +1,30 @@
-# 영어 덱 — 두 가지를 동시에 잡는다.
-#  1) 실무: 펌프/유압/도장 사양서·검사성적서·해외 발주처 메일 (지금 하는 일에 바로 쓰임)
-#  2) 시험: 빈출 어휘·구문 (TOEIC/OPIc/토플 공통 고빈도)
-# front 를 보고 back 을 떠올린 뒤 확인하는 방식.
+# 영어 덱 — 목표는 OPIc IH 이상, 덤으로 실무 영어.
+#
+# 카드는 두 종류다.
+#  - kind: word     표현 암기. front 를 보고 back 을 떠올린 뒤 확인한다.
+#  - kind: speaking 오픽 실전. 질문을 보고 제한시간 동안 실제로 소리 내어 말한 뒤,
+#                   뼈대와 표현을 확인한다. 눈으로 읽기만 하면 점수가 오르지 않는다.
+#
+# 실무 카드(펌프/도장/검사/메일)는 버리지 않는다. 오픽 배경설문에서 '직장인' 을
+# 고르면 직업 관련 문항이 반드시 나오는데, 그때 쓸 재료가 바로 이 어휘들이다.
 meta:
-  name: 엔지니어 영어
-  tags: [실무-장비, 실무-도장, 실무-검사, 실무-이메일, 실무-회의, 시험-어휘, 시험-구문]
+  name: OPIc + 실무 영어
+  # kind 가 없으면 word(표현 암기). speaking 은 소리 내어 말하는 훈련 카드다.
+  tags:
+    - 실무-장비
+    - 실무-도장
+    - 실무-검사
+    - 실무-이메일
+    - 실무-회의
+    - 오픽-표현
+    - 오픽-자기소개
+    - 오픽-직업
+    - 오픽-묘사
+    - 오픽-습관
+    - 오픽-경험
+    - 오픽-비교
+    - 오픽-롤플레이
+    - 오픽-돌발
 
 cards:
   # --- 실무-장비 (펌프/유압) ---
@@ -77,56 +97,862 @@ cards:
   - {id: e059, tag: 실무-회의, front: "현실적으로 어렵습니다.", back: "That would be difficult in practice.", ex: "impossible 보다 부드러운 거절"}
   - {id: e060, tag: 실무-회의, front: "대안을 제안드려도 될까요?", back: "May I suggest an alternative?", ex: "제안 도입"}
 
-  # --- 시험-어휘 (고빈도) ---
-  - {id: e061, tag: 시험-어휘, front: "comply with", back: "~을 준수하다", ex: "All equipment must comply with local safety regulations."}
-  - {id: e062, tag: 시험-어휘, front: "in accordance with", back: "~에 따라", ex: "Work shall be carried out in accordance with the specification."}
-  - {id: e063, tag: 시험-어휘, front: "subject to", back: "~의 대상인, ~을 조건으로 하는", ex: "Prices are subject to change without notice."}
-  - {id: e064, tag: 시험-어휘, front: "prior to", back: "~에 앞서", ex: "Notify us prior to shipment."}
-  - {id: e065, tag: 시험-어휘, front: "on behalf of", back: "~을 대신하여", ex: "I am writing on behalf of the project team."}
-  - {id: e066, tag: 시험-어휘, front: "at your earliest convenience", back: "가능한 한 빨리(정중)", ex: "Please respond at your earliest convenience."}
-  - {id: e067, tag: 시험-어휘, front: "be scheduled to", back: "~할 예정이다", ex: "The inspection is scheduled to take place on Monday."}
-  - {id: e068, tag: 시험-어휘, front: "be responsible for", back: "~을 담당하다", ex: "She is responsible for quality assurance."}
-  - {id: e069, tag: 시험-어휘, front: "implement", back: "시행하다, 구현하다", ex: "We will implement the new procedure next quarter."}
-  - {id: e070, tag: 시험-어휘, front: "streamline", back: "간소화하다, 능률화하다", ex: "The software streamlines the approval process."}
-  - {id: e071, tag: 시험-어휘, front: "mandatory / optional", back: "필수의 / 선택적인", ex: "Attendance at the safety briefing is mandatory."}
-  - {id: e072, tag: 시험-어휘, front: "reimburse", back: "(비용을) 환급하다", ex: "Travel expenses will be reimbursed within 30 days."}
-  - {id: e073, tag: 시험-어휘, front: "tentative", back: "잠정적인", ex: "The schedule is tentative and subject to confirmation."}
-  - {id: e074, tag: 시험-어휘, front: "discrepancy", back: "불일치, 차이", ex: "There is a discrepancy between the drawing and the data sheet."}
-  - {id: e075, tag: 시험-어휘, front: "feasible", back: "실현 가능한", ex: "The proposed schedule is not feasible."}
-  - {id: e076, tag: 시험-어휘, front: "mitigate", back: "완화하다, 경감하다", ex: "Measures were taken to mitigate the noise impact."}
-  - {id: e077, tag: 시험-어휘, front: "expedite", back: "신속히 처리하다", ex: "Please expedite the delivery of the spare parts."}
-  - {id: e078, tag: 시험-어휘, front: "in lieu of", back: "~ 대신에", ex: "A written test was given in lieu of an interview."}
-  - {id: e079, tag: 시험-어휘, front: "contingency", back: "예비비, 비상 대비책", ex: "A contingency plan is required for equipment failure."}
-  - {id: e080, tag: 시험-어휘, front: "preliminary", back: "예비의, 사전의", ex: "Preliminary results indicate an improvement."}
-  - {id: e081, tag: 시험-어휘, front: "obsolete", back: "더 이상 쓰이지 않는, 구식의", ex: "That model is now obsolete."}
-  - {id: e082, tag: 시험-어휘, front: "durable / durability", back: "내구성 있는 / 내구성", ex: "The coating provides excellent durability in marine environments."}
-  - {id: e083, tag: 시험-어휘, front: "redundant", back: "여분의, 이중화된", ex: "A redundant power supply improves reliability."}
-  - {id: e084, tag: 시험-어휘, front: "criteria (pl.) / criterion (sg.)", back: "기준", ex: "The acceptance criteria are defined in the ITP."}
-  - {id: e085, tag: 시험-어휘, front: "verify / validate", back: "검증하다 / 타당성을 확인하다", ex: "Please verify the dimensions against the drawing."}
-  - {id: e086, tag: 시험-어휘, front: "allocate", back: "할당하다, 배정하다", ex: "Additional resources were allocated to the project."}
-  - {id: e087, tag: 시험-어휘, front: "deteriorate", back: "악화되다, 열화되다", ex: "The seal deteriorates rapidly at high temperatures."}
-  - {id: e088, tag: 시험-어휘, front: "compensate for", back: "~을 보상하다, 상쇄하다", ex: "The design compensates for thermal expansion."}
-  - {id: e089, tag: 시험-어휘, front: "refrain from", back: "~을 삼가다", ex: "Please refrain from using mobile phones in the test area."}
-  - {id: e090, tag: 시험-어휘, front: "with regard to", back: "~에 관하여", ex: "With regard to your inquiry, please see below."}
+  # ================= 오픽 =================
 
-  # --- 시험-구문 (말하기/쓰기에 바로 쓰는 패턴) ---
-  - {id: e091, tag: 시험-구문, front: "~하는 데 익숙하다", back: "be used to -ing", ex: "I am used to working with overseas clients."}
-  - {id: e092, tag: 시험-구문, front: "~할 만한 가치가 있다", back: "be worth -ing", ex: "It is worth checking the alignment once more."}
-  - {id: e093, tag: 시험-구문, front: "~하는 것이 좋겠다", back: "It would be better to ...", ex: "It would be better to postpone the test."}
-  - {id: e094, tag: 시험-구문, front: "A뿐 아니라 B도", back: "not only A but also B", ex: "Not only the pump but also the motor was replaced."}
-  - {id: e095, tag: 시험-구문, front: "~하자마자", back: "As soon as ... / No sooner ... than ...", ex: "As soon as we receive approval, we will proceed."}
-  - {id: e096, tag: 시험-구문, front: "~인 반면에", back: "whereas / while", ex: "Gear pumps are simple, whereas piston pumps are more efficient."}
-  - {id: e097, tag: 시험-구문, front: "~을 감안하면", back: "Given that ... / Considering ...", ex: "Given that the site is remote, spare parts are essential."}
-  - {id: e098, tag: 시험-구문, front: "~에 달려 있다", back: "depend(s) on / be contingent upon", ex: "The schedule depends on when the material arrives."}
-  - {id: e099, tag: 시험-구문, front: "~할 경우에 대비하여", back: "in case (of) ...", ex: "Keep a spare seal in case of leakage."}
-  - {id: e100, tag: 시험-구문, front: "~하는 편이다 (경향)", back: "tend to ...", ex: "Older units tend to consume more fuel."}
-  - {id: e101, tag: 시험-구문, front: "~일지도 모른다 (완곡)", back: "It may well be that ...", ex: "It may well be that the sensor is faulty."}
-  - {id: e102, tag: 시험-구문, front: "굳이 말하자면", back: "If anything, ...", ex: "If anything, the vibration got slightly worse."}
-  - {id: e103, tag: 시험-구문, front: "~하기만 하면", back: "as long as ...", ex: "As long as the pressure is stable, we can continue."}
-  - {id: e104, tag: 시험-구문, front: "설상가상으로", back: "To make matters worse, ...", ex: "To make matters worse, the backup unit also failed."}
-  - {id: e105, tag: 시험-구문, front: "~와 달리", back: "Unlike ...", ex: "Unlike hydraulic systems, pneumatic systems use compressible air."}
-  - {id: e106, tag: 시험-구문, front: "결과적으로", back: "As a result, / Consequently,", ex: "Consequently, the delivery was delayed by two weeks."}
-  - {id: e107, tag: 시험-구문, front: "~하는 한편", back: "meanwhile / in the meantime", ex: "In the meantime, we will prepare the shipping documents."}
-  - {id: e108, tag: 시험-구문, front: "~할 예정이었으나", back: "was supposed to ... but ...", ex: "The test was supposed to start today but was postponed."}
-  - {id: e109, tag: 시험-구문, front: "~인 것 같습니다 (조심스럽게)", back: "It appears that ...", ex: "It appears that the filter is clogged."}
-  - {id: e110, tag: 시험-구문, front: "~하는 데 어려움을 겪다", back: "have difficulty (in) -ing", ex: "We had difficulty sourcing the replacement part."}
+  # --- 오픽-표현: 담화 표지와 시간 벌기 ---
+  # IH/AL 을 가르는 건 어려운 단어가 아니라 '말이 끊기지 않는 것'이다.
+  # 침묵 3초는 감점이지만, 아래 표현으로 채운 3초는 오히려 자연스럽다.
+  - {id: o001, tag: 오픽-표현, front: "잠깐만요, 생각 좀 하고요.", back: "Well, let me think for a second.", ex: "침묵 대신 쓰는 1순위 표현. 무조건 외울 것."}
+  - {id: o002, tag: 오픽-표현, front: "아, 좋은 질문이네요.", back: "That's a good question, actually.", ex: "시간 벌기 2순위. 자연스럽게 3초를 번다."}
+  - {id: o003, tag: 오픽-표현, front: "음, 뭐라고 해야 하지…", back: "Um, how can I put this...", ex: "말문이 막혔을 때. 원어민도 쓴다."}
+  - {id: o004, tag: 오픽-표현, front: "사실은 말이죠,", back: "The thing is, ...", ex: "핵심을 꺼낼 때. 문장 앞에 붙이면 말이 한 박자 여유로워진다."}
+  - {id: o005, tag: 오픽-표현, front: "제 말은,", back: "What I mean is, ...", ex: "방금 한 말이 어설펐을 때 다시 설명. 자기 부연은 감점이 아니라 가점."}
+  - {id: o006, tag: 오픽-표현, front: "아, 생각해 보니까,", back: "Actually, now that I think about it, ...", ex: "말하다가 더 좋은 내용이 떠올랐을 때. AL 급 신호."}
+  - {id: o007, tag: 오픽-표현, front: "그러고 보니,", back: "Come to think of it, ...", ex: "과거 경험 문항에서 디테일을 추가할 때."}
+  - {id: o008, tag: 오픽-표현, front: "솔직히 말하면,", back: "To be honest with you, ...", ex: "솔직한 감상 = 구체적인 답변. 채점자가 좋아한다."}
+  - {id: o009, tag: 오픽-표현, front: "아니, 정확히는", back: "or should I say, ...", ex: "스스로 고쳐 말하기. 고급 화자의 표지다."}
+  - {id: o010, tag: 오픽-표현, front: "아, 죄송, ~라는 뜻이에요", back: "Sorry, I mean ...", ex: "틀렸을 때 얼어붙지 말고 이걸로 넘어간다."}
+  - {id: o011, tag: 오픽-표현, front: "어디까지 말했죠? 아 맞다,", back: "Anyway, where was I? Oh right, ...", ex: "말이 샜을 때 원래 주제로 복귀."}
+  - {id: o012, tag: 오픽-표현, front: "뭐 그런 것들요", back: "...and stuff like that. / ...and things like that.", ex: "열거를 자연스럽게 끝낸다. 문어체 etc. 보다 훨씬 구어답다."}
+  - {id: o013, tag: 오픽-표현, front: "좀 ~한 편이에요", back: "It's kind of ... / sort of ...", ex: "단정을 피하는 완충. 남발은 금물, 한 답변에 1~2회."}
+  - {id: o014, tag: 오픽-표현, front: "한 ~쯤 되는 것 같아요", back: "I'd say (it's) about ...", ex: "숫자를 말할 때. 정확할 필요 없고 구체적이면 된다."}
+  - {id: o015, tag: 오픽-표현, front: "예전에는", back: "Back in the day, ... / Back then, ...", ex: "비교 문항에서 과거로 전환하는 신호탄."}
+  - {id: o016, tag: 오픽-표현, front: "요즘은", back: "These days, ... / Nowadays, ...", ex: "비교 문항에서 현재로 전환. Back then 과 짝으로 쓴다."}
+  - {id: o017, tag: 오픽-표현, front: "예전엔 ~했는데 지금은 ~해요", back: "I used to ..., but now I ...", ex: "비교 문항 만능 구조. 이 한 문장만 있어도 틀이 잡힌다."}
+  - {id: o018, tag: 오픽-표현, front: "그게 다예요 / 뭐 그 정도요", back: "That's pretty much it. / So yeah, that's about it.", ex: "답변 종료 신호. 어정쩡하게 끝내는 것보다 훨씬 낫다."}
+  - {id: o019, tag: 오픽-표현, front: "별거 아닌데,", back: "It's not a big deal, but ...", ex: "사소한 일화를 꺼낼 때. 경험 문항 도입으로 좋다."}
+  - {id: o020, tag: 오픽-표현, front: "특히 기억나는 건,", back: "What I remember most is ...", ex: "경험 문항에서 클라이맥스로 넘어갈 때."}
+
+  # --- 오픽-자기소개 (1번 문항, 100% 출제) ---
+  - id: o021
+    tag: 오픽-자기소개
+    kind: speaking
+    seconds: 60
+    q: "Let's start the interview. Tell me a little about yourself."
+    ko: "인터뷰를 시작하죠. 본인에 대해 조금 말해 주세요."
+    structure:
+      - "이름 + 사는 곳 + 직업 한 문장"
+      - "무슨 일을 하는지 구체적으로 (회사 이름 말고 하는 일)"
+      - "요즘 관심사나 취미 하나로 마무리"
+    phrases:
+      - "My name is ... and I live in ..."
+      - "I work as a mechanical engineer at a company that makes industrial pumps."
+      - "Outside of work, I'm really into ..."
+    tip: "1번은 유일하게 통째로 외워 가도 되는 문항. 45~60초로 미리 완성해 두고 시작할 것."
+  - id: o022
+    tag: 오픽-자기소개
+    kind: speaking
+    seconds: 60
+    q: "Tell me about your family."
+    ko: "가족에 대해 말해 주세요."
+    structure:
+      - "몇 명이고 누구누구인지"
+      - "한 명을 골라 구체적으로 (성격/하는 일)"
+      - "가족과 뭘 하며 시간을 보내는지"
+    phrases:
+      - "There are four of us in my family."
+      - "My father is the kind of person who ..."
+      - "We usually get together on weekends and ..."
+    tip: "나열만 하면 IM에서 멈춘다. 한 명을 골라 일화를 붙이는 순간 IH로 간다."
+  - id: o023
+    tag: 오픽-자기소개
+    kind: speaking
+    seconds: 75
+    q: "What do you like to do in your free time?"
+    ko: "여가 시간에 뭘 하는 걸 좋아하나요?"
+    structure:
+      - "주로 하는 것 한 가지를 먼저 정한다"
+      - "얼마나 자주, 누구와, 어디서"
+      - "왜 좋아하는지 (이유가 있어야 점수가 붙는다)"
+    phrases:
+      - "I'd say my favorite thing to do is ..."
+      - "I usually do it about twice a week, mostly on weekends."
+      - "The reason I like it is that it helps me clear my head."
+    tip: "배경설문에서 고른 취미와 일치시킬 것. 안 고른 걸 말하면 뒤 문항과 어긋난다."
+
+  # --- 오픽-직업 (배경설문 '직장인' 선택 시 반드시 나옴) ---
+  - id: o024
+    tag: 오픽-직업
+    kind: speaking
+    seconds: 90
+    q: "Tell me about the company you work for."
+    ko: "다니는 회사에 대해 말해 주세요."
+    structure:
+      - "회사가 뭘 만드는지 한 문장"
+      - "규모나 위치 등 배경 한두 문장"
+      - "내가 속한 팀과 하는 일"
+    phrases:
+      - "I work for a company that makes industrial pumps and hydraulic equipment."
+      - "It's not a huge company — I'd say about ... people."
+      - "I'm on the engineering team, so I handle the technical documents."
+    tip: "회사 이름은 아무도 안 궁금하다. what we make 와 what I do 를 구체적으로."
+  - id: o025
+    tag: 오픽-직업
+    kind: speaking
+    seconds: 90
+    q: "What are your responsibilities at work? Describe a typical day."
+    ko: "업무에서 맡은 일은 무엇인가요? 평범한 하루를 설명해 주세요."
+    structure:
+      - "핵심 업무 한 문장 (My main job is to ...)"
+      - "아침 → 오후 시간 순서로 실제 하는 일"
+      - "가장 시간이 많이 드는 일 또는 까다로운 일"
+    phrases:
+      - "My main job is to prepare technical documents for our clients."
+      - "I usually start by checking emails from the client, and then ..."
+      - "The part that takes the most time is ..."
+    tip: "시간 순서(first, then, after that, by the end of the day)로 엮으면 말이 안 끊긴다."
+  - id: o026
+    tag: 오픽-직업
+    kind: speaking
+    seconds: 90
+    q: "Describe the office or the place where you work."
+    ko: "사무실이나 일하는 공간을 묘사해 주세요."
+    structure:
+      - "전체적인 첫인상 (크기, 분위기)"
+      - "공간 배치를 방향어로 (in the corner, next to, across from)"
+      - "내 자리와 거기서 보이는 것"
+    phrases:
+      - "It's a fairly open space with desks lined up in rows."
+      - "My desk is right next to the window, across from the meeting room."
+      - "There's a small kitchen area in the corner where everyone grabs coffee."
+    tip: "묘사 문항은 방향·위치 표현이 점수다. next to / across from / in the middle of 를 의식적으로 쓸 것."
+  - id: o027
+    tag: 오픽-직업
+    kind: speaking
+    seconds: 90
+    q: "Tell me about a project you worked on recently."
+    ko: "최근에 맡았던 프로젝트에 대해 말해 주세요."
+    structure:
+      - "무슨 프로젝트였는지 + 언제 (과거 시제 시작)"
+      - "내가 맡은 부분과 진행 과정"
+      - "결과와 그때 느낀 점"
+    phrases:
+      - "A few months ago, we got an order for cooling water pumps for a power plant."
+      - "I was in charge of the painting specifications and the inspection documents."
+      - "In the end we delivered on time, which was a relief."
+    tip: "경험 문항은 전부 과거 시제. got / was / had / delivered 를 의식적으로 유지할 것."
+  - id: o028
+    tag: 오픽-직업
+    kind: speaking
+    seconds: 100
+    q: "Tell me about a problem you had at work and how you solved it."
+    ko: "직장에서 겪은 문제와 해결 방법을 말해 주세요."
+    structure:
+      - "상황 설정 (언제, 무슨 일이 터졌는지)"
+      - "왜 문제였는지 (긴박함을 만든다)"
+      - "내가 한 조치 → 결과 → 배운 점"
+    phrases:
+      - "One time, the client found an error in the drawing right before the deadline."
+      - "The problem was that we only had two days left."
+      - "So what I did was, I called the supplier directly and ..."
+    tip: "오픽 최고난도 유형. 문제 → 조치 → 결과 세 덩어리만 지키면 길이가 저절로 나온다."
+  - id: o029
+    tag: 오픽-직업
+    kind: speaking
+    seconds: 80
+    q: "Who do you work with? Describe one of your coworkers."
+    ko: "누구와 함께 일하나요? 동료 한 명을 묘사해 주세요."
+    structure:
+      - "팀 구성 한 문장"
+      - "한 명을 골라 성격 + 일하는 스타일"
+      - "그 사람과의 일화 한 토막"
+    phrases:
+      - "I work closely with about five people on the engineering team."
+      - "There's one guy, he's been there for over ten years, and he knows everything about ..."
+      - "Whenever I get stuck, he's the person I go to."
+    tip: "a guy / this one colleague 처럼 구어체로 시작하면 자연스럽다."
+  - id: o030
+    tag: 오픽-직업
+    kind: speaking
+    seconds: 90
+    q: "How has your job changed over the past few years?"
+    ko: "지난 몇 년간 당신의 일은 어떻게 변했나요?"
+    structure:
+      - "예전에는 어땠는지 (used to)"
+      - "무엇이 바뀌었는지 (but now / these days)"
+      - "그 변화가 좋은지 나쁜지 내 평가"
+    phrases:
+      - "Back when I started, we did almost everything on paper."
+      - "But these days, pretty much everything is done digitally."
+      - "Honestly, it's made things faster, but there's also more to keep track of."
+    tip: "비교 문항. used to / back then 과 now / these days 를 짝으로 반드시 쓸 것."
+  - id: o031
+    tag: 오픽-직업
+    kind: speaking
+    seconds: 80
+    q: "What do you do to prepare before an important meeting?"
+    ko: "중요한 회의 전에 어떤 준비를 하나요?"
+    structure:
+      - "준비 단계를 순서대로 2~3가지"
+      - "가장 신경 쓰는 것 하나"
+      - "준비가 부족했던 적이 있다면 짧게"
+    phrases:
+      - "The first thing I do is go through the documents one more time."
+      - "I also try to guess what questions the client might ask."
+      - "I learned that the hard way, because one time I ..."
+    tip: "습관 문항이지만 끝에 과거 일화를 붙이면 길이와 점수가 같이 올라간다."
+
+  # --- 오픽-묘사 ---
+  - id: o032
+    tag: 오픽-묘사
+    kind: speaking
+    seconds: 90
+    q: "Describe your house. What does it look like?"
+    ko: "집을 묘사해 주세요. 어떻게 생겼나요?"
+    structure:
+      - "종류와 크기 (아파트/단독, 방 몇 개)"
+      - "방을 하나씩 위치 표현으로"
+      - "가장 좋아하는 공간과 그 이유"
+    phrases:
+      - "I live in an apartment on the ... floor."
+      - "As soon as you walk in, there's the living room, and the kitchen is right next to it."
+      - "My favorite spot is definitely the ..., because that's where I ..."
+    tip: "As soon as you walk in... 으로 시작하면 동선을 따라 말하게 되어 막히지 않는다."
+  - id: o033
+    tag: 오픽-묘사
+    kind: speaking
+    seconds: 90
+    q: "Tell me about your neighborhood. What is it like?"
+    ko: "사는 동네는 어떤 곳인가요?"
+    structure:
+      - "전체 분위기 한 문장 (조용한지 번화한지)"
+      - "주변에 뭐가 있는지 구체적으로 3가지"
+      - "살기에 어떤지 내 평가"
+    phrases:
+      - "It's a pretty quiet residential area."
+      - "There's a big supermarket about five minutes away, and a park right behind my building."
+      - "What I like about it is that everything is within walking distance."
+    tip: "'좋아요' 로 끝내지 말 것. 왜 좋은지 한 문장을 반드시 붙인다."
+  - id: o034
+    tag: 오픽-묘사
+    kind: speaking
+    seconds: 85
+    q: "Describe the park you usually go to."
+    ko: "자주 가는 공원을 묘사해 주세요."
+    structure:
+      - "어디 있고 얼마나 걸리는지"
+      - "안에 뭐가 있는지 (산책로, 운동기구, 벤치)"
+      - "사람들이 거기서 뭘 하는지"
+    phrases:
+      - "It's about a ten-minute walk from my place."
+      - "There's a walking path that goes all the way around, and some exercise equipment on one side."
+      - "In the evening you see a lot of people jogging or walking their dogs."
+    tip: "사람들이 뭘 하는지(You see a lot of people -ing)를 넣으면 묘사가 살아난다."
+  - id: o035
+    tag: 오픽-묘사
+    kind: speaking
+    seconds: 85
+    q: "What does your favorite café look like?"
+    ko: "좋아하는 카페는 어떻게 생겼나요?"
+    structure:
+      - "위치와 첫인상"
+      - "인테리어와 분위기 (조명, 음악, 좌석)"
+      - "거기서 주로 뭘 하는지"
+    phrases:
+      - "It's a small place tucked away on a side street."
+      - "The lighting is pretty warm and they always play jazz in the background."
+      - "I usually go there when I need to focus on something."
+    tip: "tucked away, cozy, spacious 같은 형용사 하나만 써도 어휘 점수가 오른다."
+  - id: o036
+    tag: 오픽-묘사
+    kind: speaking
+    seconds: 90
+    q: "Tell me about your hometown."
+    ko: "고향에 대해 말해 주세요."
+    structure:
+      - "어디인지 + 어떤 도시인지"
+      - "유명한 것 또는 특징 2가지"
+      - "지금 사는 곳과 다른 점"
+    phrases:
+      - "I'm originally from ..., which is about two hours from Seoul."
+      - "It's known for ..."
+      - "Compared to where I live now, it's a lot more laid-back."
+    tip: "Compared to ... 를 넣으면 묘사 문항에 비교까지 얹어 점수가 올라간다."
+  - id: o037
+    tag: 오픽-묘사
+    kind: speaking
+    seconds: 80
+    q: "Tell me about the weather in your country."
+    ko: "당신 나라의 날씨에 대해 말해 주세요."
+    structure:
+      - "사계절이 있다는 전제"
+      - "계절별로 한 문장씩 (온도 + 체감)"
+      - "내가 제일 좋아하는/싫어하는 계절과 이유"
+    phrases:
+      - "We have four distinct seasons here."
+      - "Summer gets really humid — I'd say it goes up to around 35 degrees."
+      - "Personally, I can't stand the summer because of the humidity."
+    tip: "돌발 최빈출. 계절 4개를 한 문장씩 미리 만들어 두면 어떤 날씨 문항도 커버된다."
+  - id: o038
+    tag: 오픽-묘사
+    kind: speaking
+    seconds: 85
+    q: "Describe your typical weekend."
+    ko: "보통 주말을 어떻게 보내는지 묘사해 주세요."
+    structure:
+      - "토요일 (늦잠? 집안일? 약속?)"
+      - "일요일 (다르게 보낸다면)"
+      - "주말에 가장 중요하게 여기는 것"
+    phrases:
+      - "On Saturdays, I tend to sleep in and take it easy."
+      - "Sunday is usually when I ..."
+      - "The main thing for me is just getting some rest before Monday."
+    tip: "tend to / usually 로 습관임을 드러낸다. 과거형을 섞지 말 것."
+  - id: o039
+    tag: 오픽-묘사
+    kind: speaking
+    seconds: 85
+    q: "What kind of technology do you use every day?"
+    ko: "매일 어떤 기술이나 기기를 사용하나요?"
+    structure:
+      - "기기를 2~3개 나열"
+      - "그중 하나를 골라 어떻게 쓰는지 구체적으로"
+      - "그게 없으면 어떨지"
+    phrases:
+      - "The one I use the most is definitely my phone."
+      - "At work, I spend most of the day on my laptop, mainly for drawings and documents."
+      - "Honestly, I'd be lost without it."
+    tip: "'무엇을' 보다 '어떻게 쓰는지'가 점수다. 하루 일과에 녹여서 말할 것."
+
+  # --- 오픽-습관 ---
+  - id: o040
+    tag: 오픽-습관
+    kind: speaking
+    seconds: 80
+    q: "What do you usually do after work?"
+    ko: "퇴근 후에는 보통 뭘 하나요?"
+    structure:
+      - "퇴근 직후 (몇 시에, 어떻게 집에 오는지)"
+      - "저녁에 하는 일 2가지"
+      - "잠들기 전 루틴"
+    phrases:
+      - "I usually get off work around six and head straight home."
+      - "After dinner, I either ... or just ..."
+      - "Before bed, I try to ..."
+    tip: "either A or B 를 쓰면 한 문장에 정보 두 개가 들어가 길이를 번다."
+  - id: o041
+    tag: 오픽-습관
+    kind: speaking
+    seconds: 85
+    q: "Tell me about your exercise routine. When and where do you exercise?"
+    ko: "운동 루틴에 대해 말해 주세요. 언제, 어디서 하나요?"
+    structure:
+      - "무슨 운동을 얼마나 자주"
+      - "언제, 어디서, 혼자인지 같이인지"
+      - "왜 그 운동을 하는지"
+    phrases:
+      - "I try to work out about three times a week, though I don't always manage it."
+      - "There's a gym right near my place, so I usually go after work."
+      - "It's mostly to relieve stress rather than to get in shape."
+    tip: "though I don't always manage it 같은 솔직한 단서가 오히려 자연스럽게 들린다."
+  - id: o042
+    tag: 오픽-습관
+    kind: speaking
+    seconds: 80
+    q: "How do you usually get to work?"
+    ko: "출근은 보통 어떻게 하나요?"
+    structure:
+      - "교통수단과 소요 시간"
+      - "경로를 순서대로"
+      - "출근길에 하는 일 / 힘든 점"
+    phrases:
+      - "It takes me about 40 minutes door to door."
+      - "I take the subway and then transfer to a bus."
+      - "The worst part is the morning rush hour — it gets really packed."
+    tip: "door to door, transfer, rush hour, packed — 교통 문항 필수 어휘."
+  - id: o043
+    tag: 오픽-습관
+    kind: speaking
+    seconds: 80
+    q: "What do you do to relax when you're stressed?"
+    ko: "스트레스를 받으면 어떻게 푸나요?"
+    structure:
+      - "주로 하는 방법 하나"
+      - "구체적으로 어떻게 하는지"
+      - "그게 효과가 있는지"
+    phrases:
+      - "When I'm stressed, the first thing I do is ..."
+      - "It might sound simple, but it really works for me."
+      - "It helps me clear my head and start over the next day."
+    tip: "It might sound simple, but... 은 평범한 답을 흥미롭게 만드는 장치다."
+  - id: o044
+    tag: 오픽-습관
+    kind: speaking
+    seconds: 75
+    q: "What do you usually eat for lunch on workdays?"
+    ko: "평일 점심은 보통 뭘 먹나요?"
+    structure:
+      - "어디서 먹는지 (구내식당? 밖?)"
+      - "주로 먹는 메뉴"
+      - "누구와, 시간은 얼마나"
+    phrases:
+      - "There's a cafeteria in our building, so most days I just eat there."
+      - "It's usually rice, soup, and a couple of side dishes."
+      - "We get about an hour, so sometimes we go out to a place nearby."
+    tip: "음식 이름을 억지로 영어로 바꾸지 말 것. kimchi stew 처럼 설명을 붙이면 충분하다."
+  - id: o045
+    tag: 오픽-습관
+    kind: speaking
+    seconds: 85
+    q: "How do you usually spend time with your friends?"
+    ko: "친구들과는 보통 어떻게 시간을 보내나요?"
+    structure:
+      - "얼마나 자주 만나는지"
+      - "주로 뭘 하는지"
+      - "요즘은 예전과 달라진 점"
+    phrases:
+      - "We don't meet as often as we used to, maybe once a month."
+      - "Usually we just grab dinner and catch up."
+      - "Now that everyone's busy with work, it's harder to find a time that works for everyone."
+    tip: "not as often as we used to → 습관 문항에 비교를 섞는 고급 기술."
+
+  # --- 오픽-경험 (전부 과거 시제. 시제 흔들리면 IH 못 간다) ---
+  - id: o046
+    tag: 오픽-경험
+    kind: speaking
+    seconds: 100
+    q: "Tell me about a memorable trip you took. Where did you go and what happened?"
+    ko: "기억에 남는 여행에 대해 말해 주세요. 어디로 갔고 무슨 일이 있었나요?"
+    structure:
+      - "언제, 어디로, 누구와 (과거 시제 시작)"
+      - "거기서 한 일 시간 순서로"
+      - "특별히 기억나는 순간 하나 + 그때 기분"
+    phrases:
+      - "This was probably two or three years ago."
+      - "We ended up staying there for about four days."
+      - "What I remember most is ..."
+    tip: "ended up -ing 는 오픽 만능 표현. '결국 ~하게 됐다' 로 이야기를 굴린다."
+  - id: o047
+    tag: 오픽-경험
+    kind: speaking
+    seconds: 100
+    q: "Tell me about a time when something unexpected happened."
+    ko: "예상치 못한 일이 벌어졌던 때에 대해 말해 주세요."
+    structure:
+      - "평범했던 상황 설정"
+      - "갑자기 벌어진 일 (All of a sudden, ...)"
+      - "어떻게 대처했고 결과는 어땠는지"
+    phrases:
+      - "It was just a normal day, and I was on my way to ..."
+      - "All of a sudden, ..."
+      - "Looking back, it's kind of funny now, but at the time I was really ..."
+    tip: "Looking back... but at the time... 은 과거 감정과 현재 관점을 대비시키는 AL 급 마무리."
+  - id: o048
+    tag: 오픽-경험
+    kind: speaking
+    seconds: 95
+    q: "Describe a time when you were really busy at work."
+    ko: "직장에서 정말 바빴던 때를 묘사해 주세요."
+    structure:
+      - "언제, 왜 바빴는지"
+      - "얼마나 바빴는지 구체적으로 (시간, 야근)"
+      - "어떻게 넘겼고 끝나고 어땠는지"
+    phrases:
+      - "Last spring we had three projects overlapping at the same time."
+      - "I was working late almost every night for about two weeks."
+      - "By the time it was over, I was completely drained."
+    tip: "completely drained / exhausted / relieved — 감정 형용사 하나가 점수를 만든다."
+  - id: o049
+    tag: 오픽-경험
+    kind: speaking
+    seconds: 90
+    q: "Tell me about the last time you met your friends. What did you do?"
+    ko: "최근에 친구들을 만났던 때를 말해 주세요. 뭘 했나요?"
+    structure:
+      - "언제, 누구를, 어디서"
+      - "한 일을 순서대로"
+      - "그날 가장 좋았던 것"
+    phrases:
+      - "It was a couple of weekends ago."
+      - "We met up around six, had dinner, and then went for coffee."
+      - "We ended up talking until almost midnight."
+    tip: "met up / grabbed dinner / hung out — 구어체 동사를 쓰면 즉시 자연스러워진다."
+  - id: o050
+    tag: 오픽-경험
+    kind: speaking
+    seconds: 95
+    q: "Talk about a time when a piece of technology broke down. What did you do?"
+    ko: "기기가 고장 났던 때에 대해 말해 주세요. 어떻게 했나요?"
+    structure:
+      - "뭐가 언제 고장 났는지"
+      - "그래서 뭐가 곤란했는지"
+      - "어떻게 해결했는지 + 배운 것"
+    phrases:
+      - "My laptop just died on me right in the middle of ..."
+      - "The worst part was that I hadn't backed anything up."
+      - "In the end I had to take it to a repair shop, and it took about a week."
+    tip: "died on me, gave out, stopped working — 고장 표현 셋만 알면 돌발도 막힌다."
+  - id: o051
+    tag: 오픽-경험
+    kind: speaking
+    seconds: 95
+    q: "Tell me about a memorable experience you had at a restaurant."
+    ko: "식당에서 겪은 기억에 남는 일을 말해 주세요."
+    structure:
+      - "언제, 어디서, 왜 갔는지"
+      - "무슨 일이 있었는지 (좋았든 나빴든)"
+      - "그 후에 다시 갔는지 / 지금 생각하면"
+    phrases:
+      - "There was this one time we went to a place that everyone was raving about."
+      - "The food took forever to come out, and when it finally did, ..."
+      - "We haven't been back since, to be honest."
+    tip: "There was this one time... 은 일화를 여는 가장 자연스러운 도입."
+  - id: o052
+    tag: 오픽-경험
+    kind: speaking
+    seconds: 90
+    q: "Describe a time when the weather caused a problem for you."
+    ko: "날씨 때문에 곤란했던 때를 묘사해 주세요."
+    structure:
+      - "언제, 어떤 날씨였는지"
+      - "그래서 무슨 문제가 생겼는지"
+      - "어떻게 했는지 + 지금 생각하면"
+    phrases:
+      - "It was during the rainy season, and it had been pouring for days."
+      - "I got completely soaked before I even got to the station."
+      - "Ever since then, I always keep an umbrella in my bag."
+    tip: "Ever since then, I always... 로 끝내면 경험이 습관으로 이어져 답변이 완결된다."
+  - id: o053
+    tag: 오픽-경험
+    kind: speaking
+    seconds: 90
+    q: "Tell me about a time you helped someone."
+    ko: "누군가를 도왔던 경험을 말해 주세요."
+    structure:
+      - "누가 어떤 상황이었는지"
+      - "내가 무엇을 했는지"
+      - "그 사람의 반응 + 내 기분"
+    phrases:
+      - "A new guy joined our team last year and he was struggling with ..."
+      - "So I offered to walk him through it."
+      - "He still brings it up sometimes, which is nice."
+    tip: "상대의 반응(He said... / He still brings it up)을 넣으면 이야기가 입체적이 된다."
+
+  # --- 오픽-비교 (콤보 세 번째 문항. used to / these days 가 핵심) ---
+  - id: o054
+    tag: 오픽-비교
+    kind: speaking
+    seconds: 95
+    q: "How has your neighborhood changed since you moved there?"
+    ko: "이사 온 뒤로 동네는 어떻게 변했나요?"
+    structure:
+      - "처음 왔을 때는 어땠는지 (used to)"
+      - "무엇이 생기고 무엇이 없어졌는지"
+      - "그 변화가 좋은지 나쁜지 내 의견"
+    phrases:
+      - "When I first moved in, there wasn't much around here."
+      - "Over the past few years, they've built a couple of new apartment complexes."
+      - "It's more convenient now, but it's also gotten a lot noisier."
+    tip: "좋은 점 + 나쁜 점을 함께 말하면 단순 나열이 '평가'가 되어 점수가 오른다."
+  - id: o055
+    tag: 오픽-비교
+    kind: speaking
+    seconds: 100
+    q: "Compare the way people worked in the past with the way they work now."
+    ko: "과거의 일하는 방식과 지금을 비교해 주세요."
+    structure:
+      - "예전 방식 (종이, 사무실 출근, 긴 회의)"
+      - "지금 방식 (디지털, 원격, 메신저)"
+      - "무엇이 나아졌고 무엇이 나빠졌는지"
+    phrases:
+      - "Back in the day, everything had to be printed and signed by hand."
+      - "Nowadays, most of it happens over email or messenger."
+      - "It's definitely faster, but I'd say people are expected to respond much quicker too."
+    tip: "본인 직업 경험으로 답하면 훨씬 구체적이다. 도면·사양서를 실제 예로 들 것."
+  - id: o056
+    tag: 오픽-비교
+    kind: speaking
+    seconds: 90
+    q: "How is the weather different from when you were a child?"
+    ko: "어렸을 때와 지금 날씨는 어떻게 다른가요?"
+    structure:
+      - "어렸을 때 날씨 (겨울이 더 추웠다 등)"
+      - "지금의 변화"
+      - "그 변화에 대한 내 생각"
+    phrases:
+      - "When I was a kid, winters felt a lot colder than they do now."
+      - "These days, summer seems to last much longer."
+      - "I think it's pretty clearly connected to climate change."
+    tip: "감각 비교(felt colder, seems longer)는 사실 확인이 필요 없어 안전하고 자연스럽다."
+  - id: o057
+    tag: 오픽-비교
+    kind: speaking
+    seconds: 90
+    q: "How has technology changed the way you do your job?"
+    ko: "기술이 당신의 업무 방식을 어떻게 바꿨나요?"
+    structure:
+      - "예전에 어떻게 했는지"
+      - "지금 어떤 도구를 쓰는지"
+      - "장점과 함께 생긴 부담"
+    phrases:
+      - "We used to mark up drawings by hand and fax them."
+      - "Now everything goes through shared folders and PDF markups."
+      - "The downside is that the client expects an answer the same day."
+    tip: "The downside is ... 한 문장으로 균형을 잡으면 IH 이상의 인상을 준다."
+  - id: o058
+    tag: 오픽-비교
+    kind: speaking
+    seconds: 90
+    q: "Compare cafés now and cafés ten years ago."
+    ko: "지금의 카페와 10년 전의 카페를 비교해 주세요."
+    structure:
+      - "예전 카페의 모습과 용도"
+      - "지금 카페의 모습과 용도"
+      - "왜 그렇게 바뀌었다고 생각하는지"
+    phrases:
+      - "Ten years ago, cafés were mostly just places to meet someone."
+      - "Now you see a lot of people working or studying alone for hours."
+      - "I think it's because more people work remotely these days."
+    tip: "I think it's because ... 로 이유를 대면 '의견' 점수가 붙는다. 사실일 필요는 없다."
+
+  # --- 오픽-롤플레이 (11~13번. 실제로 전화하듯 말해야 한다) ---
+  - id: o059
+    tag: 오픽-롤플레이
+    kind: speaking
+    seconds: 70
+    q: "I'll give you a situation. You want to join a gym near your house. Call the gym and ask three questions."
+    ko: "상황을 드립니다. 집 근처 헬스장에 등록하려 합니다. 전화해서 세 가지를 질문하세요."
+    structure:
+      - "인사 + 전화한 이유 (Hi, I'm calling about ...)"
+      - "질문 3개를 하나씩 분명하게"
+      - "감사 인사로 마무리"
+    phrases:
+      - "Hi, I'm calling to ask about your membership."
+      - "First of all, could you tell me how much it costs per month?"
+      - "One more thing — do you have lockers and showers?"
+      - "Great, thanks a lot for your help."
+    tip: "질문 세 개를 First / Also / One more thing 으로 번호 매기듯 말할 것. 개수를 채우는 게 채점 기준이다."
+  - id: o060
+    tag: 오픽-롤플레이
+    kind: speaking
+    seconds: 90
+    q: "You bought something online and it arrived damaged. Call the store, explain the problem, and suggest two solutions."
+    ko: "온라인 구매품이 파손되어 도착했습니다. 매장에 전화해 문제를 설명하고 두 가지 해결책을 제안하세요."
+    structure:
+      - "인사 + 주문 확인 정보"
+      - "무엇이 어떻게 잘못됐는지 (I'm afraid ...)"
+      - "해결책 2개 제안 (교환 / 환불)"
+    phrases:
+      - "Hi, I'm calling about an order I received yesterday."
+      - "I'm afraid the item arrived damaged — there's a crack on the side."
+      - "So I was wondering, could you either send me a replacement, or give me a refund?"
+      - "Whichever is easier for you would be fine."
+    tip: "either A or B 로 두 안을 한 문장에 담는 게 가장 깔끔하다. 이 유형의 정답 패턴."
+  - id: o061
+    tag: 오픽-롤플레이
+    kind: speaking
+    seconds: 85
+    q: "You need to cancel a reservation. Call the restaurant, explain why, and ask about the cancellation policy."
+    ko: "예약을 취소해야 합니다. 식당에 전화해 사유를 설명하고 취소 규정을 물어보세요."
+    structure:
+      - "예약 정보 확인 (이름, 날짜, 인원)"
+      - "취소 사유를 정중하게"
+      - "규정 질문 + 사과"
+    phrases:
+      - "Hi, I have a reservation for this Saturday at seven, under the name ..."
+      - "Something came up at work, so unfortunately I need to cancel."
+      - "Could you let me know if there's a cancellation fee?"
+      - "I'm really sorry for the short notice."
+    tip: "Something came up 는 이유를 자세히 말하지 않아도 되는 만능 핑계. 외워 둘 것."
+  - id: o062
+    tag: 오픽-롤플레이
+    kind: speaking
+    seconds: 85
+    q: "You are running late for an appointment. Call the person, explain the situation, and suggest an alternative."
+    ko: "약속에 늦습니다. 상대에게 전화해 상황을 설명하고 대안을 제시하세요."
+    structure:
+      - "사과 먼저"
+      - "왜 늦는지 + 얼마나 늦는지"
+      - "대안 제시 (시간 조정 / 장소 변경)"
+    phrases:
+      - "Hey, I'm so sorry — I'm running a bit late."
+      - "The traffic is much worse than I expected. I think I'll be about 20 minutes behind."
+      - "Would it work if we pushed it back to seven thirty?"
+      - "Or if you'd rather, we could meet somewhere closer to you."
+    tip: "Would it work if ...? 는 롤플레이 대안 제시 1순위 표현."
+  - id: o063
+    tag: 오픽-롤플레이
+    kind: speaking
+    seconds: 95
+    q: "A machine at your workplace stopped working. Call the supplier, explain the problem, and ask what to do."
+    ko: "직장의 장비가 멈췄습니다. 공급업체에 전화해 문제를 설명하고 조치를 문의하세요."
+    structure:
+      - "회사 소개 + 어떤 장비인지"
+      - "증상을 구체적으로 (언제부터, 어떤 현상)"
+      - "긴급함 전달 + 조치 요청"
+    phrases:
+      - "Hi, this is ... from ... We purchased a pump unit from you last year."
+      - "Since yesterday morning it's been making a strange noise and the pressure keeps dropping."
+      - "We really need it back up and running by Monday."
+      - "Could you send an engineer out, or at least walk me through what to check?"
+    tip: "본인 직업이 그대로 문제로 나온 유형. 실무 덱의 장비 어휘가 여기서 값을 한다."
+  - id: o064
+    tag: 오픽-롤플레이
+    kind: speaking
+    seconds: 80
+    q: "Your friend is visiting your city. Call and ask three questions about their plan."
+    ko: "친구가 당신의 도시를 방문합니다. 전화해서 일정에 대해 세 가지를 물어보세요."
+    structure:
+      - "반가운 인사"
+      - "질문 3개 (언제 / 얼마나 / 뭘 하고 싶은지)"
+      - "내가 도울 일 제안"
+    phrases:
+      - "Hey, I heard you're coming down next month — that's great!"
+      - "So when exactly are you arriving, and how long are you staying?"
+      - "Is there anything in particular you want to do while you're here?"
+      - "Let me know and I'll figure out the rest."
+    tip: "친구 상황은 반말 톤(Hey / that's great)으로. 격식체를 쓰면 부자연스럽다."
+  - id: o065
+    tag: 오픽-롤플레이
+    kind: speaking
+    seconds: 80
+    q: "Now ask me three questions about my job."
+    ko: "이번엔 저에게 당신의 직업에 대해 세 가지를 질문해 보세요."
+    structure:
+      - "질문하겠다는 신호 (So, can I ask you ...)"
+      - "질문 3개를 각각 완전한 문장으로"
+      - "반응 한마디로 마무리"
+    phrases:
+      - "Sure, I've got a few things I'm curious about."
+      - "First, what exactly do you do at your job?"
+      - "And how long have you been working there?"
+      - "Last one — what's the best part about it?"
+    tip: "'면접관에게 질문하기' 유형. 의문문 어순이 흔들리면 바로 감점. 3개 모두 완전한 문장으로."
+  - id: o066
+    tag: 오픽-롤플레이
+    kind: speaking
+    seconds: 90
+    q: "You made a reservation but the hotel has no record of it. Explain the situation and ask them to resolve it."
+    ko: "예약했는데 호텔에 기록이 없습니다. 상황을 설명하고 해결을 요청하세요."
+    structure:
+      - "예약 정보 제시 (확인 메일, 날짜, 이름)"
+      - "지금 무엇이 문제인지 침착하게"
+      - "원하는 해결 + 대안 수용 의사"
+    phrases:
+      - "I booked a room for tonight and I have the confirmation email right here."
+      - "But you're saying there's no record of it? That's a bit of a problem for me."
+      - "Is there any chance you could find me a room anyway?"
+      - "If not, could you help me find something nearby?"
+    tip: "화내지 말 것. 침착한 항의(That's a bit of a problem)가 오히려 고급 표현으로 채점된다."
+
+  # --- 오픽-돌발 (배경설문에 없는 주제. 안 나올 수 없다) ---
+  - id: o067
+    tag: 오픽-돌발
+    kind: speaking
+    seconds: 85
+    q: "Tell me about public transportation in your country. How do people get around?"
+    ko: "당신 나라의 대중교통에 대해 말해 주세요. 사람들은 어떻게 이동하나요?"
+    structure:
+      - "주요 수단 나열 (지하철, 버스, 택시)"
+      - "요금과 편리함 구체적으로"
+      - "불편한 점 하나"
+    phrases:
+      - "The subway system here is really well developed, especially in Seoul."
+      - "You just tap your card and it works on both buses and subways."
+      - "The only downside is rush hour — it gets unbelievably crowded."
+    tip: "돌발 빈출 1위. 지하철·버스·환승·교통카드 네 덩어리만 준비해 두면 된다."
+  - id: o068
+    tag: 오픽-돌발
+    kind: speaking
+    seconds: 85
+    q: "What do people in your country do to recycle?"
+    ko: "당신 나라 사람들은 재활용을 어떻게 하나요?"
+    structure:
+      - "분리수거가 의무라는 사실"
+      - "어떻게 나누는지 구체적으로"
+      - "잘 지켜지는지 내 생각"
+    phrases:
+      - "Recycling is actually mandatory here, so everyone has to separate their trash."
+      - "We sort it into paper, plastic, glass, cans, and food waste."
+      - "Most people take it pretty seriously, partly because you can get fined."
+    tip: "separate / sort / food waste / fined — 이 넷이면 재활용 문항은 끝난다."
+  - id: o069
+    tag: 오픽-돌발
+    kind: speaking
+    seconds: 85
+    q: "Tell me about banks in your country. How do people usually handle their banking?"
+    ko: "당신 나라의 은행에 대해 말해 주세요. 사람들은 보통 어떻게 이용하나요?"
+    structure:
+      - "예전 방식 (창구 방문)"
+      - "지금 방식 (앱, 인터넷뱅킹)"
+      - "아직 직접 가야 하는 경우"
+    phrases:
+      - "Honestly, I can't remember the last time I actually went into a bank."
+      - "Almost everything is done through apps these days — transfers, payments, everything."
+      - "You really only go in person for things like opening an account."
+    tip: "I can't remember the last time I ... 로 시작하면 강한 인상을 준다."
+  - id: o070
+    tag: 오픽-돌발
+    kind: speaking
+    seconds: 85
+    q: "Describe a hotel you stayed at recently. What was it like?"
+    ko: "최근 묵었던 호텔을 묘사해 주세요. 어땠나요?"
+    structure:
+      - "언제, 어디서, 왜 묵었는지"
+      - "방과 시설 묘사"
+      - "만족했는지 + 이유"
+    phrases:
+      - "I stayed at a place in ... when I went there for a business trip."
+      - "The room itself was pretty small, but it was clean and the bed was comfortable."
+      - "For the price, I'd say it was decent."
+    tip: "For the price, ... 같은 평가 기준을 넣으면 단순 묘사가 판단으로 올라간다."
+  - id: o071
+    tag: 오픽-돌발
+    kind: speaking
+    seconds: 85
+    q: "How do people in your country celebrate holidays?"
+    ko: "당신 나라 사람들은 명절을 어떻게 보내나요?"
+    structure:
+      - "대표 명절 하나를 고른다"
+      - "사람들이 하는 일 (귀성, 음식, 의례)"
+      - "나는 어떻게 보내는지"
+    phrases:
+      - "The two biggest holidays here are Seollal and Chuseok."
+      - "Most people travel back to their hometown, so the highways get completely jammed."
+      - "In my case, we usually just have a big meal together and take it easy."
+    tip: "한국 고유 개념은 음역 + 한 줄 설명. Seollal, which is Lunar New Year 처럼."
+  - id: o072
+    tag: 오픽-돌발
+    kind: speaking
+    seconds: 85
+    q: "What do people usually do when they get sick in your country?"
+    ko: "당신 나라 사람들은 아플 때 보통 어떻게 하나요?"
+    structure:
+      - "병원 가는 문턱이 낮다는 점"
+      - "절차 (접수, 진료, 처방전, 약국)"
+      - "심각하지 않으면 어떻게 하는지"
+    phrases:
+      - "Going to a clinic here is pretty quick and cheap, so people go even for minor things."
+      - "You see a doctor, get a prescription, and pick up the medicine at a pharmacy next door."
+      - "If it's just a mild cold, most people just rest and drink a lot of water."
+    tip: "clinic / prescription / pharmacy 세 단어면 건강 돌발은 막을 수 있다."
+  - id: o073
+    tag: 오픽-돌발
+    kind: speaking
+    seconds: 85
+    q: "Tell me about how you use the internet. What do you do online?"
+    ko: "인터넷을 어떻게 사용하는지 말해 주세요. 온라인에서 뭘 하나요?"
+    structure:
+      - "하루에 얼마나, 어떤 기기로"
+      - "주로 하는 것 2~3가지"
+      - "일에서 쓰는 방식 (차별화 포인트)"
+    phrases:
+      - "I'm online pretty much all day, between my phone and my work laptop."
+      - "Mostly it's news, YouTube, and shopping."
+      - "At work I use it to look up standards and specifications, so it's essential for me."
+    tip: "일에서 쓰는 방식을 넣으면 남들과 다른 답이 된다. 표준·규격 검색이 좋은 예."
+  - id: o074
+    tag: 오픽-돌발
+    kind: speaking
+    seconds: 85
+    q: "Tell me about furniture in Korean homes. What kind of furniture do people have?"
+    ko: "한국 가정의 가구에 대해 말해 주세요. 사람들은 어떤 가구를 두나요?"
+    structure:
+      - "거실 / 침실 중심으로 나열"
+      - "한국 특유의 점 (좌식, 붙박이장, 바닥난방)"
+      - "우리 집은 어떤지"
+    phrases:
+      - "Most living rooms have a sofa, a TV, and a low table in the middle."
+      - "One thing that's a bit different here is that we have floor heating, so people often sit on the floor."
+      - "In my place, the bedroom is pretty simple — just a bed and a built-in closet."
+    tip: "한국 특유의 점(floor heating, built-in closet)을 하나 끼우면 답변이 단숨에 구체적이 된다."

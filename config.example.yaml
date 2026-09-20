@@ -19,11 +19,14 @@ exam:
   categories: []          # 비우면 전체 11개 분야. 예: ["유압 시스템", "엔진 및 파워트레인"]
 
 english:
-  name: 영어 시험
+  name: OPIc
+  target_level: IH        # 목표 등급. 알림 머리에 표시된다.
   date: ""                # 응시일이 정해지면 "2027-03-15" 처럼
   provisional: false
-  daily_cards: 7
-  tags: []                # 비우면 전체. 예: ["실무-이메일", "시험-어휘"]
+  # 말하기와 표현은 quota 를 따로 준다. 한 통에 섞으면 말하기가 밀려 사라진다.
+  speaking_cards: 2       # 하루에 입으로 말해 볼 오픽 문항 수
+  word_cards: 5           # 하루에 외울 표현 수
+  tags: []                # 비우면 전체. 시험 직전엔 ["오픽-롤플레이", "오픽-돌발"] 처럼
 
 radar:
   max_items: 6

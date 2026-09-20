@@ -34,11 +34,14 @@ DEFAULTS: dict[str, Any] = {
         "categories": [],  # 비우면 전체. 특정 분야만 돌리고 싶을 때 채운다.
     },
     "english": {
-        "name": "영어 시험",
+        "name": "OPIc",
+        "target_level": "IH",
         "date": "",
         "provisional": False,
-        "daily_cards": 7,
-        "tags": [],  # 비우면 전체. 예: ["실무", "이메일", "시험"]
+        # 말하기와 표현은 quota 를 나눈다. 섞어서 뽑으면 말하기가 밀려 사라진다.
+        "speaking_cards": 2,
+        "word_cards": 5,
+        "tags": [],  # 비우면 전체. 예: ["오픽-롤플레이", "오픽-돌발"]
     },
     "radar": {
         "max_items": 6,
