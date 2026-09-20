@@ -1,0 +1,75 @@
+name: daily
+
+# 내 PC가 꺼져 있어도 GitHub 서버가 대신 돌려서 폰으로 알림을 보낸다.
+# cron 은 UTC 기준. KST = UTC + 9시간.
+on:
+  schedule:
+    - cron: "12 22 * * *"   # 07:12 KST — 브리핑 + 기술사 + 영어
+    - cron: "7 10 * * 1-5"  # 19:07 KST 평일 — 레이더
+  workflow_dispatch:
+    inputs:
+      tasks:
+        description: "실행할 태스크 (공백 구분). 비우면 brief exam english"
+        required: false
+        default: ""
+
+concurrency:
+  group: a3-daily
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: 실행할 태스크 결정
+        id: pick
+        run: |
+          if [ -n "${{ inputs.tasks }}" ]; then
+            echo "tasks=${{ inputs.tasks }}" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event.schedule }}" = "7 10 * * 1-5" ]; then
+            echo "tasks=radar" >> "$GITHUB_OUTPUT"
+          else
+            echo "tasks=brief exam english" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: a3 실행
+        env:
+          A3_CHANNELS: ${{ vars.A3_CHANNELS || 'ntfy' }}
+          A3_NTFY_TOPIC: ${{ secrets.A3_NTFY_TOPIC }}
+          A3_NTFY_SERVER: ${{ secrets.A3_NTFY_SERVER }}
+          A3_NTFY_TOKEN: ${{ secrets.A3_NTFY_TOKEN }}
+          A3_TELEGRAM_TOKEN: ${{ secrets.A3_TELEGRAM_TOKEN }}
+          A3_TELEGRAM_CHAT_ID: ${{ secrets.A3_TELEGRAM_CHAT_ID }}
+          A3_DISCORD_WEBHOOK: ${{ secrets.A3_DISCORD_WEBHOOK }}
+        run: python -m a3 run ${{ steps.pick.outputs.tasks }}
+
+      - name: 학습 진도 커밋
+        # 실행이 실패해도 그때까지의 진도는 남긴다.
+        if: always()
+        run: |
+          git config user.name  "a3-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -z "$(git status --porcelain state/)" ]; then
+            echo "변경된 상태 없음"
+            exit 0
+          fi
+          git add state/
+          git commit -m "chore(state): ${{ steps.pick.outputs.tasks }} $(date -u +%Y-%m-%d)"
+          # 같은 시간대에 다른 실행이 밀어 넣었을 수 있으니 한 번 리베이스 후 재시도
+          for i in 1 2 3; do
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}" && exit 0
+            sleep $((i * 5))
+          done
+          echo "상태 푸시 실패 (다음 실행에서 다시 시도)" >&2

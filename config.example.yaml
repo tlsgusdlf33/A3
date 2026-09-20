@@ -1,0 +1,77 @@
+# A3 설정. `cp config.example.yaml config.yaml` 후 고쳐 쓰세요.
+# config.yaml 은 .gitignore 되어 있습니다. 토큰은 여기 말고 환경변수(.env)에 두세요.
+
+state_path: state/a3.json
+
+owner:
+  name: ""
+  job: "건설기계/유압 설비 엔지니어"
+
+exam:
+  name: 건설기계기술사
+  # 2026년 회차(138회 2/7, 139회 5/16, 140회 8/22)는 모두 종료.
+  # 아래는 2027년 141회 추정일입니다. Q-Net 공고가 뜨면 바꾸고 provisional 을 false 로.
+  date: "2027-02-06"
+  provisional: true
+  round: "141회(추정)"
+  source: "https://www.q-net.or.kr/crf021.do"
+  daily_cards: 3          # 하루에 받을 문제 수
+  categories: []          # 비우면 전체 11개 분야. 예: ["유압 시스템", "엔진 및 파워트레인"]
+
+english:
+  name: 영어 시험
+  date: ""                # 응시일이 정해지면 "2027-03-15" 처럼
+  provisional: false
+  daily_cards: 7
+  tags: []                # 비우면 전체. 예: ["실무-이메일", "시험-어휘"]
+
+radar:
+  max_items: 6
+  lookback_days: 7        # 이 기간 안의 소식만
+  min_score: 1
+  google_news_queries:
+    - "건설기계 기술사"
+    - "유압 펌프 기술 동향"
+    - "건설기계 배출가스 규제"
+    - "건설기계 안전 기준 개정"
+    - "기계 엔지니어 부업"
+    - "기술문서 번역 프리랜서"
+    - "중소기업 기술개발 지원사업 기계"
+  feeds: []               # 임의 RSS/Atom URL 추가 가능
+  keywords:               # 제목에 걸리면 점수 가산. 점수가 높을수록 위로.
+    건설기계: 2
+    기술사: 3
+    유압: 2
+    펌프: 2
+    굴삭기: 1
+    규제: 1
+    개정: 1
+    지원사업: 2
+    공고: 1
+    부업: 2
+    프리랜서: 2
+    외주: 1
+    자문: 2
+    강의: 1
+  exclude:                # 제목에 이게 있으면 버림
+    - 채용공고
+    - 구인구직
+
+brief:
+  weather: true
+  latitude: 37.5665       # 사는 곳/현장 좌표로 바꾸세요
+  longitude: 126.9780
+  location_name: 서울
+
+notify:
+  # console / ntfy / telegram / discord — 여러 개 동시 지정 가능
+  channels: [console]
+  ntfy:
+    server: https://ntfy.sh
+    topic: ""             # 예: a3-gildong-7f3a (남이 못 맞힐 긴 이름으로!)
+    priority: default     # min / low / default / high / max
+  telegram:
+    chat_id: ""           # 토큰은 환경변수 A3_TELEGRAM_TOKEN
+  discord:
+    webhook_url: ""
+  dry_run: false

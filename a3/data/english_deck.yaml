@@ -1,0 +1,132 @@
+# 영어 덱 — 두 가지를 동시에 잡는다.
+#  1) 실무: 펌프/유압/도장 사양서·검사성적서·해외 발주처 메일 (지금 하는 일에 바로 쓰임)
+#  2) 시험: 빈출 어휘·구문 (TOEIC/OPIc/토플 공통 고빈도)
+# front 를 보고 back 을 떠올린 뒤 확인하는 방식.
+meta:
+  name: 엔지니어 영어
+  tags: [실무-장비, 실무-도장, 실무-검사, 실무-이메일, 실무-회의, 시험-어휘, 시험-구문]
+
+cards:
+  # --- 실무-장비 (펌프/유압) ---
+  - {id: e001, tag: 실무-장비, front: "closed cooling water pump", back: "밀폐 냉각수 펌프", ex: "The closed cooling water pump shall be of the horizontal centrifugal type."}
+  - {id: e002, tag: 실무-장비, front: "shaft sealing / mechanical seal", back: "축 밀봉 / 메커니컬 실", ex: "Mechanical seals shall comply with API 682."}
+  - {id: e003, tag: 실무-장비, front: "NPSH required / available", back: "필요 흡입수두 / 유효 흡입수두", ex: "NPSHa shall exceed NPSHr by at least 1.0 m."}
+  - {id: e004, tag: 실무-장비, front: "rated capacity / total head", back: "정격 유량 / 전양정", ex: "Rated capacity is 250 m3/h at a total head of 45 m."}
+  - {id: e005, tag: 실무-장비, front: "impeller / casing / wear ring", back: "임펠러 / 케이싱 / 웨어링", ex: "Wear ring clearance shall be checked at every overhaul."}
+  - {id: e006, tag: 실무-장비, front: "relief valve set pressure", back: "릴리프 밸브 설정압", ex: "The relief valve set pressure is 21 MPa."}
+  - {id: e007, tag: 실무-장비, front: "hydraulic accumulator (bladder type)", back: "유압 어큐뮬레이터 (블래더형)", ex: "Pre-charge the accumulator with nitrogen to 90 bar."}
+  - {id: e008, tag: 실무-장비, front: "directional control valve", back: "방향 제어 밸브", ex: "A 4/3 directional control valve with a closed center is used."}
+  - {id: e009, tag: 실무-장비, front: "cavitation", back: "캐비테이션(공동현상)", ex: "Cavitation causes pitting on the impeller vanes."}
+  - {id: e010, tag: 실무-장비, front: "lubricant list / lubrication schedule", back: "윤활유 목록 / 급유 주기표", ex: "Please refer to the attached lubricant list, Rev. 2."}
+  - {id: e011, tag: 실무-장비, front: "coupling alignment", back: "커플링 정렬", ex: "Coupling alignment shall be within 0.05 mm TIR."}
+  - {id: e012, tag: 실무-장비, front: "strainer / suction filter", back: "스트레이너 / 흡입 필터", ex: "Clean the suction strainer before initial start-up."}
+  - {id: e013, tag: 실무-장비, front: "vibration severity", back: "진동 허용치", ex: "Vibration severity shall not exceed 4.5 mm/s RMS per ISO 10816."}
+  - {id: e014, tag: 실무-장비, front: "duty / standby unit", back: "상용기 / 예비기", ex: "One duty and one standby unit shall be provided."}
+  - {id: e015, tag: 실무-장비, front: "local control panel (LCP)", back: "현장 제어반", ex: "The LCP shall have an IP55 enclosure."}
+
+  # --- 실무-도장 (지금 작성 중인 문서군) ---
+  - {id: e016, tag: 실무-도장, front: "surface preparation", back: "표면 처리(소지 조정)", ex: "Surface preparation shall be to Sa 2.5 per ISO 8501-1."}
+  - {id: e017, tag: 실무-도장, front: "blast cleaning / abrasive blasting", back: "블라스트 세정 / 연마재 분사", ex: "Abrasive blasting is not permitted when humidity exceeds 85%."}
+  - {id: e018, tag: 실무-도장, front: "dry film thickness (DFT)", back: "건조도막두께", ex: "The total DFT shall be a minimum of 280 microns."}
+  - {id: e019, tag: 실무-도장, front: "primer / intermediate coat / top coat", back: "프라이머 / 중도 / 상도", ex: "Apply the intermediate coat within the recoat interval."}
+  - {id: e020, tag: 실무-도장, front: "recoat interval (min / max)", back: "재도장 간격(최소/최대)", ex: "Exceeding the maximum recoat interval requires sweep blasting."}
+  - {id: e021, tag: 실무-도장, front: "holiday test / pinhole detection", back: "핀홀 검사", ex: "A holiday test shall be performed on the entire lined surface."}
+  - {id: e022, tag: 실무-도장, front: "adhesion test (pull-off)", back: "부착력 시험(인발식)", ex: "Adhesion shall not be less than 5 MPa."}
+  - {id: e023, tag: 실무-도장, front: "dew point / substrate temperature", back: "이슬점 / 소지 온도", ex: "The substrate temperature shall be at least 3 degrees above the dew point."}
+  - {id: e024, tag: 실무-도장, front: "touch-up / repair coating", back: "부분 보수 도장", ex: "Damaged areas shall be touched up with the same coating system."}
+  - {id: e025, tag: 실무-도장, front: "painting data sheet", back: "도장 사양서(데이터시트)", ex: "The painting data sheet for the strainer is enclosed as Attachment 3."}
+
+  # --- 실무-검사/품질 ---
+  - {id: e026, tag: 실무-검사, front: "inspection and test plan (ITP)", back: "검사 및 시험 계획서", ex: "Please review the ITP and mark your intervention points."}
+  - {id: e027, tag: 실무-검사, front: "witness point / hold point", back: "입회점 / 정지점", ex: "The hydrostatic test is designated as a hold point."}
+  - {id: e028, tag: 실무-검사, front: "hydrostatic test", back: "수압 시험", ex: "The casing shall be hydrostatically tested at 1.5 times the design pressure."}
+  - {id: e029, tag: 실무-검사, front: "non-conformance report (NCR)", back: "부적합 보고서", ex: "An NCR was issued for the out-of-tolerance bore."}
+  - {id: e030, tag: 실무-검사, front: "material test certificate (MTC / EN 10204 3.1)", back: "재질 시험성적서", ex: "MTCs to EN 10204 3.1 shall be submitted for all pressure parts."}
+  - {id: e031, tag: 실무-검사, front: "factory acceptance test (FAT)", back: "공장 입회 시험", ex: "FAT is scheduled for the third week of October."}
+  - {id: e032, tag: 실무-검사, front: "as-built drawing", back: "준공 도면", ex: "As-built drawings shall be submitted within four weeks after delivery."}
+  - {id: e033, tag: 실무-검사, front: "punch list", back: "미결 사항 목록", ex: "All punch list items shall be cleared prior to handover."}
+  - {id: e034, tag: 실무-검사, front: "deviation request / concession", back: "사양 변경 요청 / 특채", ex: "We hereby submit a deviation request for the flange rating."}
+  - {id: e035, tag: 실무-검사, front: "traceability", back: "추적성", ex: "Heat numbers shall be maintained for full traceability."}
+
+  # --- 실무-이메일 (그대로 복사해 쓸 수 있는 문장) ---
+  - {id: e036, tag: 실무-이메일, front: "첨부와 같이 개정본을 송부드립니다.", back: "Please find attached the revised document for your review.", ex: "Rev. 2 반영본 송부 시"}
+  - {id: e037, tag: 실무-이메일, front: "아래 건에 대해 확인 부탁드립니다.", back: "Could you please confirm the following?", ex: "짧고 정중한 확인 요청"}
+  - {id: e038, tag: 실무-이메일, front: "회신이 늦어 죄송합니다.", back: "I apologize for the delayed reply.", ex: "Sorry for my late reply 보다 격식 있는 표현"}
+  - {id: e039, tag: 실무-이메일, front: "일정상 9월 30일까지 회신 주시면 감사하겠습니다.", back: "We would appreciate your reply by September 30 to keep the schedule.", ex: "기한을 압박 없이 명시"}
+  - {id: e040, tag: 실무-이메일, front: "귀사의 의견을 반영하여 수정하였습니다.", back: "The document has been revised to reflect your comments.", ex: "코멘트 반영 회신"}
+  - {id: e041, tag: 실무-이메일, front: "해당 사항은 당사 공급범위가 아닙니다.", back: "This item falls outside our scope of supply.", ex: "scope of supply = 공급범위"}
+  - {id: e042, tag: 실무-이메일, front: "추가 정보가 필요하시면 언제든 연락 주십시오.", back: "Please do not hesitate to contact me should you require any further information.", ex: "격식 있는 맺음말"}
+  - {id: e043, tag: 실무-이메일, front: "우선 참고하시도록 초안을 보내드립니다.", back: "I am sending the draft for your reference in the meantime.", ex: "for your reference = 참고용"}
+  - {id: e044, tag: 실무-이메일, front: "승인 후 제작에 착수하겠습니다.", back: "We will commence fabrication upon your approval.", ex: "upon approval = 승인 즉시"}
+  - {id: e045, tag: 실무-이메일, front: "납기 지연이 우려되어 미리 알려드립니다.", back: "We would like to notify you in advance of a potential delay in delivery.", ex: "선제적 리스크 통보"}
+  - {id: e046, tag: 실무-이메일, front: "이전 메일에 이어서 말씀드립니다.", back: "Further to my previous email, ...", ex: "Further to = ~에 이어"}
+  - {id: e047, tag: 실무-이메일, front: "담당자를 참조에 추가했습니다.", back: "I have copied our project engineer on this email.", ex: "copy someone on = 참조에 넣다"}
+  - {id: e048, tag: 실무-이메일, front: "요청하신 자료는 금주 중 송부 예정입니다.", back: "The requested documents will be issued by the end of this week.", ex: "issue = (공식) 발행·송부"}
+  - {id: e049, tag: 실무-이메일, front: "확인 결과 당사 오기였습니다. 정정합니다.", back: "Upon review, this was a typographical error on our side. Please see the corrected version.", ex: "on our side = 당사 측"}
+  - {id: e050, tag: 실무-이메일, front: "본 건은 별도 협의가 필요합니다.", back: "This matter requires separate discussion.", ex: "요건 분리 제안"}
+
+  # --- 실무-회의 ---
+  - {id: e051, tag: 실무-회의, front: "간단히 배경부터 말씀드리겠습니다.", back: "Let me start with some background.", ex: "발표 도입"}
+  - {id: e052, tag: 실무-회의, front: "제가 제대로 이해했는지 확인하고 싶습니다.", back: "I would like to make sure I understand you correctly.", ex: "되묻기 (무례하지 않게)"}
+  - {id: e053, tag: 실무-회의, front: "다시 한 번 말씀해 주시겠습니까?", back: "Could you repeat that, please?", ex: "Pardon? 보다 자연스러움"}
+  - {id: e054, tag: 실무-회의, front: "그 부분은 확인 후 회신드리겠습니다.", back: "Let me check on that and get back to you.", ex: "즉답 회피 + 책임 있는 마무리"}
+  - {id: e055, tag: 실무-회의, front: "요약하면 세 가지입니다.", back: "To summarize, there are three points.", ex: "구조 잡기"}
+  - {id: e056, tag: 실무-회의, front: "일정에 영향을 주는 사안입니다.", back: "This has an impact on the schedule.", ex: "have an impact on"}
+  - {id: e057, tag: 실무-회의, front: "결론부터 말씀드리면", back: "To get straight to the point, ...", ex: "두괄식 표현"}
+  - {id: e058, tag: 실무-회의, front: "합의된 내용을 회의록으로 정리하겠습니다.", back: "I will circulate the minutes of meeting covering what we agreed.", ex: "circulate = 회람하다"}
+  - {id: e059, tag: 실무-회의, front: "현실적으로 어렵습니다.", back: "That would be difficult in practice.", ex: "impossible 보다 부드러운 거절"}
+  - {id: e060, tag: 실무-회의, front: "대안을 제안드려도 될까요?", back: "May I suggest an alternative?", ex: "제안 도입"}
+
+  # --- 시험-어휘 (고빈도) ---
+  - {id: e061, tag: 시험-어휘, front: "comply with", back: "~을 준수하다", ex: "All equipment must comply with local safety regulations."}
+  - {id: e062, tag: 시험-어휘, front: "in accordance with", back: "~에 따라", ex: "Work shall be carried out in accordance with the specification."}
+  - {id: e063, tag: 시험-어휘, front: "subject to", back: "~의 대상인, ~을 조건으로 하는", ex: "Prices are subject to change without notice."}
+  - {id: e064, tag: 시험-어휘, front: "prior to", back: "~에 앞서", ex: "Notify us prior to shipment."}
+  - {id: e065, tag: 시험-어휘, front: "on behalf of", back: "~을 대신하여", ex: "I am writing on behalf of the project team."}
+  - {id: e066, tag: 시험-어휘, front: "at your earliest convenience", back: "가능한 한 빨리(정중)", ex: "Please respond at your earliest convenience."}
+  - {id: e067, tag: 시험-어휘, front: "be scheduled to", back: "~할 예정이다", ex: "The inspection is scheduled to take place on Monday."}
+  - {id: e068, tag: 시험-어휘, front: "be responsible for", back: "~을 담당하다", ex: "She is responsible for quality assurance."}
+  - {id: e069, tag: 시험-어휘, front: "implement", back: "시행하다, 구현하다", ex: "We will implement the new procedure next quarter."}
+  - {id: e070, tag: 시험-어휘, front: "streamline", back: "간소화하다, 능률화하다", ex: "The software streamlines the approval process."}
+  - {id: e071, tag: 시험-어휘, front: "mandatory / optional", back: "필수의 / 선택적인", ex: "Attendance at the safety briefing is mandatory."}
+  - {id: e072, tag: 시험-어휘, front: "reimburse", back: "(비용을) 환급하다", ex: "Travel expenses will be reimbursed within 30 days."}
+  - {id: e073, tag: 시험-어휘, front: "tentative", back: "잠정적인", ex: "The schedule is tentative and subject to confirmation."}
+  - {id: e074, tag: 시험-어휘, front: "discrepancy", back: "불일치, 차이", ex: "There is a discrepancy between the drawing and the data sheet."}
+  - {id: e075, tag: 시험-어휘, front: "feasible", back: "실현 가능한", ex: "The proposed schedule is not feasible."}
+  - {id: e076, tag: 시험-어휘, front: "mitigate", back: "완화하다, 경감하다", ex: "Measures were taken to mitigate the noise impact."}
+  - {id: e077, tag: 시험-어휘, front: "expedite", back: "신속히 처리하다", ex: "Please expedite the delivery of the spare parts."}
+  - {id: e078, tag: 시험-어휘, front: "in lieu of", back: "~ 대신에", ex: "A written test was given in lieu of an interview."}
+  - {id: e079, tag: 시험-어휘, front: "contingency", back: "예비비, 비상 대비책", ex: "A contingency plan is required for equipment failure."}
+  - {id: e080, tag: 시험-어휘, front: "preliminary", back: "예비의, 사전의", ex: "Preliminary results indicate an improvement."}
+  - {id: e081, tag: 시험-어휘, front: "obsolete", back: "더 이상 쓰이지 않는, 구식의", ex: "That model is now obsolete."}
+  - {id: e082, tag: 시험-어휘, front: "durable / durability", back: "내구성 있는 / 내구성", ex: "The coating provides excellent durability in marine environments."}
+  - {id: e083, tag: 시험-어휘, front: "redundant", back: "여분의, 이중화된", ex: "A redundant power supply improves reliability."}
+  - {id: e084, tag: 시험-어휘, front: "criteria (pl.) / criterion (sg.)", back: "기준", ex: "The acceptance criteria are defined in the ITP."}
+  - {id: e085, tag: 시험-어휘, front: "verify / validate", back: "검증하다 / 타당성을 확인하다", ex: "Please verify the dimensions against the drawing."}
+  - {id: e086, tag: 시험-어휘, front: "allocate", back: "할당하다, 배정하다", ex: "Additional resources were allocated to the project."}
+  - {id: e087, tag: 시험-어휘, front: "deteriorate", back: "악화되다, 열화되다", ex: "The seal deteriorates rapidly at high temperatures."}
+  - {id: e088, tag: 시험-어휘, front: "compensate for", back: "~을 보상하다, 상쇄하다", ex: "The design compensates for thermal expansion."}
+  - {id: e089, tag: 시험-어휘, front: "refrain from", back: "~을 삼가다", ex: "Please refrain from using mobile phones in the test area."}
+  - {id: e090, tag: 시험-어휘, front: "with regard to", back: "~에 관하여", ex: "With regard to your inquiry, please see below."}
+
+  # --- 시험-구문 (말하기/쓰기에 바로 쓰는 패턴) ---
+  - {id: e091, tag: 시험-구문, front: "~하는 데 익숙하다", back: "be used to -ing", ex: "I am used to working with overseas clients."}
+  - {id: e092, tag: 시험-구문, front: "~할 만한 가치가 있다", back: "be worth -ing", ex: "It is worth checking the alignment once more."}
+  - {id: e093, tag: 시험-구문, front: "~하는 것이 좋겠다", back: "It would be better to ...", ex: "It would be better to postpone the test."}
+  - {id: e094, tag: 시험-구문, front: "A뿐 아니라 B도", back: "not only A but also B", ex: "Not only the pump but also the motor was replaced."}
+  - {id: e095, tag: 시험-구문, front: "~하자마자", back: "As soon as ... / No sooner ... than ...", ex: "As soon as we receive approval, we will proceed."}
+  - {id: e096, tag: 시험-구문, front: "~인 반면에", back: "whereas / while", ex: "Gear pumps are simple, whereas piston pumps are more efficient."}
+  - {id: e097, tag: 시험-구문, front: "~을 감안하면", back: "Given that ... / Considering ...", ex: "Given that the site is remote, spare parts are essential."}
+  - {id: e098, tag: 시험-구문, front: "~에 달려 있다", back: "depend(s) on / be contingent upon", ex: "The schedule depends on when the material arrives."}
+  - {id: e099, tag: 시험-구문, front: "~할 경우에 대비하여", back: "in case (of) ...", ex: "Keep a spare seal in case of leakage."}
+  - {id: e100, tag: 시험-구문, front: "~하는 편이다 (경향)", back: "tend to ...", ex: "Older units tend to consume more fuel."}
+  - {id: e101, tag: 시험-구문, front: "~일지도 모른다 (완곡)", back: "It may well be that ...", ex: "It may well be that the sensor is faulty."}
+  - {id: e102, tag: 시험-구문, front: "굳이 말하자면", back: "If anything, ...", ex: "If anything, the vibration got slightly worse."}
+  - {id: e103, tag: 시험-구문, front: "~하기만 하면", back: "as long as ...", ex: "As long as the pressure is stable, we can continue."}
+  - {id: e104, tag: 시험-구문, front: "설상가상으로", back: "To make matters worse, ...", ex: "To make matters worse, the backup unit also failed."}
+  - {id: e105, tag: 시험-구문, front: "~와 달리", back: "Unlike ...", ex: "Unlike hydraulic systems, pneumatic systems use compressible air."}
+  - {id: e106, tag: 시험-구문, front: "결과적으로", back: "As a result, / Consequently,", ex: "Consequently, the delivery was delayed by two weeks."}
+  - {id: e107, tag: 시험-구문, front: "~하는 한편", back: "meanwhile / in the meantime", ex: "In the meantime, we will prepare the shipping documents."}
+  - {id: e108, tag: 시험-구문, front: "~할 예정이었으나", back: "was supposed to ... but ...", ex: "The test was supposed to start today but was postponed."}
+  - {id: e109, tag: 시험-구문, front: "~인 것 같습니다 (조심스럽게)", back: "It appears that ...", ex: "It appears that the filter is clogged."}
+  - {id: e110, tag: 시험-구문, front: "~하는 데 어려움을 겪다", back: "have difficulty (in) -ing", ex: "We had difficulty sourcing the replacement part."}

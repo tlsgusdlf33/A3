@@ -1,0 +1,26 @@
+name: ci
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -r requirements.txt pytest
+      - name: 테스트
+        run: python -m pytest tests -q
+      - name: 알림 없이 실제 실행 (덱/태스크 연결 확인)
+        env:
+          A3_CHANNELS: console
+          A3_DRY_RUN: "1"
+          A3_STATE_PATH: /tmp/ci-state.json
+        run: python -m a3 run brief exam english
