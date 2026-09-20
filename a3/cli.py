@@ -8,7 +8,7 @@ import shutil
 import sys
 import traceback
 
-from a3 import __version__, srs, tasks, util
+from a3 import __version__, answers, srs, tasks, util
 from a3.config import REPO_ROOT, load
 from a3.notify import Message, Notifier
 from a3.store import Store
@@ -43,6 +43,11 @@ def build_parser() -> argparse.ArgumentParser:
     show = sub.add_parser("show", help="카드 내용 보기")
     show.add_argument("deck", choices=sorted(DECK_FILES))
     show.add_argument("card_id")
+
+    ans = sub.add_parser("answer", help="모범답안 전문 보기 (A4 3~4장)")
+    ans.add_argument("card_id")
+
+    sub.add_parser("answers", help="모범답안이 작성된 문항 목록")
 
     sub.add_parser("test-notify", help="알림 채널 점검용 메시지 발송")
     sub.add_parser("init", help="config.example.yaml 을 config.yaml 로 복사")
@@ -167,6 +172,45 @@ def cmd_show(args) -> int:
     return 0
 
 
+def cmd_answer(args) -> int:
+    card = _find_card("exam", args.card_id)
+    if card is None:
+        print(f"exam 덱에 '{args.card_id}' 문항이 없습니다.", file=sys.stderr)
+        return 2
+    answer = answers.load(args.card_id)
+    if answer is None:
+        print(f"{args.card_id}번 모범답안은 아직 작성되지 않았습니다.", file=sys.stderr)
+        print(f"  문제: {card['q']}", file=sys.stderr)
+        print("  `a3 show exam %s` 로 답안 틀과 키워드는 볼 수 있습니다." % args.card_id,
+              file=sys.stderr)
+        return 1
+    lo, hi = answer.target
+    print(answer.body)
+    print(
+        f"\n{'─' * 60}\n"
+        f"{answer.card_id} · {answer.kind} · A4 {answer.pages}장 (목표 {lo}~{hi}) · "
+        f"표 {answer.tables} · 도해 {answer.figures}"
+    )
+    return 0
+
+
+def cmd_answers() -> int:
+    cards = load_deck(DECK_FILES["exam"])["cards"]
+    have = answers.available()
+    written = [c for c in cards if str(c["id"]) in have]
+    essay = [c for c in cards if c["type"] == "서술형"]
+    print(f"모범답안 {len(written)}편 / 서술형 {len(essay)}문항\n")
+    total = 0.0
+    for card in written:
+        a = answers.load(str(card["id"]))
+        total += a.pages
+        mark = " " if a.in_range else "!"
+        print(f" {mark}{a.card_id}  A4 {a.pages}장  표{a.tables:2d} 도해{a.figures}  {a.title}")
+    print(f"\n  합계 A4 {round(total, 1)}장")
+    print("  전문 보기: a3 answer <문항번호>")
+    return 0
+
+
 def cmd_test_notify(config) -> int:
     notifier = Notifier(config)
     results = notifier.send(
@@ -215,6 +259,10 @@ def main(argv: list[str] | None = None) -> int:
         return 0
     if args.command == "show":
         return cmd_show(args)
+    if args.command == "answer":
+        return cmd_answer(args)
+    if args.command == "answers":
+        return cmd_answers()
     if args.command == "test-notify":
         return cmd_test_notify(config)
 

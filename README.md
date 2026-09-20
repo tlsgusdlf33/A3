@@ -19,7 +19,7 @@ PC를 켜 둘 필요 없이 GitHub이 대신 돌려준다.
 | 태스크 | 하는 일 |
 |---|---|
 | `brief` | D-day, 오늘 학습량, 날씨, 최근 실행 이력을 한 화면에 |
-| `exam` | **건설기계기술사 120문항**을 간격 반복으로 매일 몇 문제씩. 분야별 답안 전개 틀 + 채점 키워드 동봉 |
+| `exam` | **건설기계기술사 120문항**을 간격 반복으로 매일 몇 문제씩. 답안 전개 틀 + 채점 키워드 + **모범답안 전문(A4 3~4장)** |
 | `english` | **OPIc 말하기 훈련 54문항 + 표현 80장**. 매일 2문항은 입으로 말하고, 5개 표현은 외운다 |
 | `radar` | 건설기계 규제/기술 동향, 부업·외주·지원사업 소식 중 **처음 보는 것만** 골라서 |
 | `selfupdate` | 원격 저장소에 새 코드가 올라오면 스스로 당겨오고 무엇이 바뀌었는지 알림 |
@@ -27,6 +27,28 @@ PC를 켜 둘 필요 없이 GitHub이 대신 돌려준다.
 기술사 문제은행은 Google Drive의 「건설기계기술사」 시트(예상문제 120선)를 구조화한 것이다.
 11개 분야(일반 기계 지식 / 유압 / 엔진·파워트레인 / 전기·제어 / 기계 유지관리 /
 안전 / 공압 / 특수 건설기계 / 환경 / 문제 해결 / 최근 빈출)를 모두 덮는다.
+
+### 모범답안은 외워서 쓸 수 있어야 한다
+
+기술사는 답을 찾는 시험이 아니라 **외워서 쓰는 시험**이다. 그래서 틀과 키워드만으로는
+부족하고, 실제로 옮겨 쓸 전문이 필요하다. `a3/data/answers/` 에 **A4 3~4장(10pt) 분량**의
+모범답안을 둔다 — 도표와 도해를 포함한 실전 답안 그대로다.
+
+```bash
+python -m a3 answers      # 작성된 답안 목록과 분량
+python -m a3 answer 011   # 전문 보기
+```
+
+도해를 SVG가 아니라 **ASCII로 그리는 이유**가 있다. 시험장에서는 손으로 그린다.
+화면에서만 예쁜 그림은 25분 안에 재현할 수 없으면 쓸모가 없다. ASCII 도해는
+알림·터미널·깃허브·웹에서 똑같이 보이고, 펜으로 그대로 옮겨 그릴 수 있다.
+
+분량은 글자 수가 아니라 **줄 수**로 잰다. 표와 도해는 글자가 적어도 지면을 그대로
+먹기 때문이다. 폭 90(한글 45자)·장당 42줄 기준으로 계산하며, 서술형이 3~4.5장을
+벗어나거나 표가 3개 미만이거나 개요·결론이 없으면 **CI가 막는다**.
+
+현재 10편(A4 39.6장). 서술형 83문항이 목표이고, 주간 루틴이 매주 3편씩 쌓는다.
+작성 규약은 [`a3/data/answers/README.md`](a3/data/answers/README.md).
 
 ### 영어는 OPIc 기준으로 짰다
 
@@ -82,7 +104,9 @@ python -m a3 run exam english      # 골라서 실행
 python -m a3 run radar --dry-run   # 알림 안 보내고 결과만 확인
 
 python -m a3 status                # 진도 확인
-python -m a3 show exam 013         # 특정 문제 다시 보기
+python -m a3 show exam 013         # 특정 문제 다시 보기 (틀 + 키워드)
+python -m a3 answer 011            # 모범답안 전문 (A4 3~4장)
+python -m a3 answers               # 답안이 작성된 문항 목록
 python -m a3 grade exam 013 4      # 채점 (0~5) → 다음 복습일 자동 계산
 python -m a3 show english o063     # 오픽 롤플레이 카드 보기
 python -m a3 grade english o063 3
@@ -154,6 +178,7 @@ brief:
 ## 내용 늘리기
 
 - 기술사 문제 추가: [`a3/data/exam_deck.yaml`](a3/data/exam_deck.yaml)의 `cards`에 한 줄
+- 모범답안 추가: `a3/data/answers/<문항번호>.md` — [작성 규약](a3/data/answers/README.md) 참고
 - 오픽/영어 카드 추가: [`a3/data/english_deck.yaml`](a3/data/english_deck.yaml)
   (`kind: speaking` 이면 말하기 카드. `structure` 3단계와 `phrases` 3개가 필수)
 - 레이더 키워드/피드: `config.yaml`의 `radar`
@@ -166,7 +191,7 @@ brief:
 
 ```bash
 pip install -r requirements.txt pytest
-python -m pytest tests -q          # 315개
+python -m pytest tests -q          # 369개
 ```
 
 ## 구조
@@ -179,5 +204,9 @@ a3/
 ├── srs.py          SM-2 간격 반복
 ├── notify.py       ntfy / telegram / discord / console
 ├── tasks/          brief · exam · english · radar · selfupdate
-└── data/           exam_deck.yaml (120문항) · english_deck.yaml (말하기 54 + 표현 80)
+├── answers.py      모범답안 로딩 + A4 분량 계산
+└── data/
+    ├── exam_deck.yaml      120문항 · 11개 분야
+    ├── english_deck.yaml   말하기 54 + 표현 80
+    └── answers/            모범답안 전문 (A4 3~4장, 도표·도해 포함)
 ```

@@ -6,7 +6,7 @@
 
 from __future__ import annotations
 
-from a3 import srs, util
+from a3 import answers, srs, util
 from a3.config import Config
 from a3.notify import Message
 from a3.store import Store
@@ -34,8 +34,12 @@ def _header(config: Config) -> tuple[str, str]:
 
 def _render(card: dict, frames: dict, index: int, total: int) -> str:
     frame = frames.get(card.get("frame_as") or card["category"], [])
+    answer = answers.load(str(card["id"]))
+    head = f"【{index}/{total}】 {card['type']} · {card['category']}"
+    if answer is not None:
+        head += f"  📄 모범답안 A4 {answer.pages}장"
     lines = [
-        f"【{index}/{total}】 {card['type']} · {card['category']}",
+        head,
         f"Q. {card['q']}",
         "",
         "— 답안 전개 —",
@@ -75,7 +79,10 @@ def run(config: Config, store: Store) -> TaskResult:
     body = "\n\n".join(
         [head, f"오늘 {total}문제 · 누적 학습 {reviewed}/{len(cards)}문항", *blocks]
     )
-    body += "\n\n✍️ 답안을 써 본 뒤 `a3 grade exam <id> <0-5>` 로 기록하세요."
+    with_answer = [str(c["id"]) for c in picked if answers.load(str(c["id"])) is not None]
+    if with_answer:
+        body += "\n\n📄 모범답안 전문: " + " · ".join(f"a3 answer {i}" for i in with_answer)
+    body += "\n✍️ 답안을 써 본 뒤 `a3 grade exam <id> <0-5>` 로 기록하세요."
 
     # 출제 사실을 기록한다. 채점은 사용자가 `a3 grade` 로 따로 한다.
     for card in picked:
