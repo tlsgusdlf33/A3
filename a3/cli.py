@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import logging
+import re
 import shutil
 import sys
 import traceback
@@ -185,12 +186,22 @@ def cmd_answer(args) -> int:
               file=sys.stderr)
         return 1
     lo, hi = answer.target
-    print(answer.body)
+    # 터미널에서는 SVG 를 그릴 수 없다. 그림 자리에 캡션을 남겨 흐름을 잇는다.
+    body = re.sub(
+        r"^!\[(그림 \d+[^\]]*)\]\(figures/[\w-]+\.svg\)\s*$",
+        lambda m: f"  ┌{'─' * 56}\n  │ [{m.group(1)}]\n"
+                  f"  │ 그림은 자료함 페이지에서 보세요.\n  └{'─' * 56}",
+        answer.body, flags=re.MULTILINE)
+    print(body)
+    figs = answer.svg_figures
     print(
         f"\n{'─' * 60}\n"
         f"{answer.card_id} · {answer.kind} · A4 {answer.pages}장 (목표 {lo}~{hi}) · "
-        f"표 {answer.tables} · 도해 {answer.figures}"
+        f"표 {answer.tables} · 그림 {len(figs)} · 도해 {answer.ascii_figures}"
     )
+    missing = answer.missing_figures()
+    if missing:
+        print(f"⚠️ 그림 파일 없음: {', '.join(missing)}", file=sys.stderr)
     return 0
 
 
@@ -205,7 +216,8 @@ def cmd_answers() -> int:
         a = answers.load(str(card["id"]))
         total += a.pages
         mark = " " if a.in_range else "!"
-        print(f" {mark}{a.card_id}  A4 {a.pages}장  표{a.tables:2d} 도해{a.figures}  {a.title}")
+        print(f" {mark}{a.card_id}  A4 {a.pages}장  표{a.tables:2d} "
+              f"그림{len(a.svg_figures)} 도해{a.ascii_figures}  {a.title}")
     print(f"\n  합계 A4 {round(total, 1)}장")
     print("  전문 보기: a3 answer <문항번호>")
     return 0

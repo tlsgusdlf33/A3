@@ -15,6 +15,7 @@ from pathlib import Path
 from a3.util import display_width
 
 ANSWER_DIR = Path(__file__).resolve().parent / "data" / "answers"
+FIGURE_DIR = ANSWER_DIR / "figures"
 
 # A4 · 글씨크기 10pt · 여백 보통 기준의 실측값.
 # 한 줄에 들어가는 표시 폭(한글 1자 = 2)과 한 장의 줄 수.
@@ -30,6 +31,11 @@ PAGE_TARGET = {
 DEFAULT_TARGET = (3.0, 4.5)
 
 _META_RE = re.compile(r"^meta:\s*(\S+)\s*\|\s*([^|]+?)\s*\|\s*(.+?)\s*$", re.MULTILINE)
+_FIG_RE = re.compile(r"^!\[(그림 \d+[^\]]*)\]\(figures/([\w-]+)\.svg\)\s*$", re.MULTILINE)
+
+# SVG 도해 한 장이 지면에서 차지하는 줄 수. 마크다운에서는 한 줄이지만
+# 인쇄하면 그만큼의 높이를 먹으므로, 분량 계산에서 실제 크기로 친다.
+FIGURE_LINES = 16
 
 
 @dataclass
@@ -63,8 +69,21 @@ class Answer:
         return self.body.count("|---") + self.body.count("|:-")
 
     @property
-    def figures(self) -> int:
+    def svg_figures(self) -> list[tuple[str, str]]:
+        """(캡션, 그림 id) 목록."""
+        return [(m.group(1), m.group(2)) for m in _FIG_RE.finditer(self.body)]
+
+    @property
+    def ascii_figures(self) -> int:
         return self.body.count("```") // 2
+
+    @property
+    def figures(self) -> int:
+        return len(self.svg_figures) + self.ascii_figures
+
+    def missing_figures(self) -> list[str]:
+        return [n for _, n in self.svg_figures
+                if not (FIGURE_DIR / f"{n}.svg").exists()]
 
 
 def count_lines(text: str) -> int:
@@ -75,7 +94,11 @@ def count_lines(text: str) -> int:
     """
     total = 0
     for raw in text.splitlines():
-        width = display_width(raw.rstrip())
+        line = raw.rstrip()
+        if _FIG_RE.match(line):
+            total += FIGURE_LINES
+            continue
+        width = display_width(line)
         total += 1 if width == 0 else -(-width // LINE_WIDTH)  # 올림
     return total
 

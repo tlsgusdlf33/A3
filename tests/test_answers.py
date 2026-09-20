@@ -72,3 +72,46 @@ def test_count_lines_measures_wrapping_and_width():
 
 def test_page_target_differs_by_question_type():
     assert answers.PAGE_TARGET["용어형"][1] < answers.PAGE_TARGET["서술형"][0]
+
+
+@pytest.mark.parametrize("cid", WRITTEN)
+def test_referenced_figures_exist(cid):
+    """마크다운이 가리키는 SVG 가 실제로 있어야 한다. 없으면 빈 칸이 된다."""
+    a = answers.load(cid)
+    assert a.missing_figures() == []
+
+
+@pytest.mark.parametrize("cid", WRITTEN)
+def test_figure_captions_are_numbered_in_order(cid):
+    a = answers.load(cid)
+    nums = [int(re.match(r"그림 (\d+)", cap).group(1)) for cap, _ in a.svg_figures]
+    assert nums == list(range(1, len(nums) + 1)), f"{cid}: 그림 번호가 {nums}"
+
+
+@pytest.mark.parametrize("cid", WRITTEN)
+def test_figure_captions_say_what_the_picture_shows(cid):
+    """'그림 1' 만 있으면 캡션이 아니다. 무엇을 보여주는지 써야 한다."""
+    a = answers.load(cid)
+    for cap, name in a.svg_figures:
+        body = re.sub(r"^그림 \d+\s*—\s*", "", cap)
+        assert len(body) >= 12, f"{cid}/{name}: 캡션이 빈약하다 — {cap!r}"
+
+
+def test_figures_are_theme_aware_and_self_contained():
+    """외부 이미지·스크립트가 있으면 자료함 페이지에서 차단되고,
+    색을 박아 쓰면 다크모드에서 안 보인다."""
+    for svg in sorted(answers.FIGURE_DIR.glob("*.svg")):
+        s = svg.read_text(encoding="utf-8")
+        assert "currentColor" in s, f"{svg.name}: currentColor 를 쓰지 않아 테마를 따르지 않는다"
+        assert 'role="img"' in s and "aria-label" in s, f"{svg.name}: 접근성 라벨 없음"
+        for bad in ("<script", "<foreignObject", "<image", "<use "):
+            assert bad not in s, f"{svg.name}: {bad} 는 들어가면 안 된다"
+        # xmlns 의 http 는 네임스페이스이므로 제외하고, 실제 외부 로딩만 잡는다
+        for bad in ('href="http', "url(http", "@import"):
+            assert bad not in s, f"{svg.name}: 외부 리소스({bad})는 차단되어 빈 칸이 된다"
+
+
+def test_a_figure_counts_as_page_space():
+    """그림은 마크다운에서 한 줄이지만 지면은 그만큼 차지한다."""
+    one_line = answers.count_lines("![그림 1 — 설명](figures/011-1.svg)")
+    assert one_line == answers.FIGURE_LINES

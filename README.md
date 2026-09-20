@@ -39,15 +39,24 @@ python -m a3 answers      # 작성된 답안 목록과 분량
 python -m a3 answer 011   # 전문 보기
 ```
 
-도해를 SVG가 아니라 **ASCII로 그리는 이유**가 있다. 시험장에서는 손으로 그린다.
-화면에서만 예쁜 그림은 25분 안에 재현할 수 없으면 쓸모가 없다. ASCII 도해는
-알림·터미널·깃허브·웹에서 똑같이 보이고, 펜으로 그대로 옮겨 그릴 수 있다.
+**그림은 코드로 그린다.** 인터넷에서 가져오지 않는다 — 교재·제조사 도해는 저작권이 있고,
+자료함 페이지는 보안 정책상 외부 이미지를 차단해서 렌더링 자체가 안 된다.
+`tools/build_figures.py` 가 SVG 를 생성하며, 벡터라 확대해도 선명하고 다크모드에서도 보인다.
+선 그림이라 시험장에서 펜으로 옮겨 그릴 수도 있다.
 
-분량은 글자 수가 아니라 **줄 수**로 잰다. 표와 도해는 글자가 적어도 지면을 그대로
-먹기 때문이다. 폭 90(한글 45자)·장당 42줄 기준으로 계산하며, 서술형이 3~4.5장을
-벗어나거나 표가 3개 미만이거나 개요·결론이 없으면 **CI가 막는다**.
+곡선 그래프와 기계 구조도는 SVG, 순서도와 단순 분기도는 ASCII 로 남긴다.
+ASCII 로 곡선을 그리면 형상이 뭉개져 알아볼 수 없기 때문이다.
 
-현재 10편(A4 39.6장). 서술형 83문항이 목표이고, 주간 루틴이 매주 3편씩 쌓는다.
+```bash
+python tools/build_figures.py   # 그림 재생성
+```
+
+분량은 글자 수가 아니라 **줄 수**로 잰다. 표와 그림은 글자가 적어도 지면을 그대로
+먹기 때문이다(그림 한 장 = 16줄). 폭 90(한글 45자)·장당 42줄 기준으로 계산하며,
+서술형이 3~4.5장을 벗어나거나 표가 3개 미만이거나 개요·결론이 없거나
+참조한 그림 파일이 없으면 **CI가 막는다**.
+
+현재 10편(A4 39.2장) · 벡터 도해 15장. 서술형 83문항이 목표이고, 주간 루틴이 매주 3편씩 쌓는다.
 작성 규약은 [`a3/data/answers/README.md`](a3/data/answers/README.md).
 
 ### 영어는 OPIc 기준으로 짰다
@@ -191,7 +200,7 @@ brief:
 
 ```bash
 pip install -r requirements.txt pytest
-python -m pytest tests -q          # 369개
+python -m pytest tests -q          # 401개
 ```
 
 ## 구조
@@ -205,8 +214,10 @@ a3/
 ├── notify.py       ntfy / telegram / discord / console
 ├── tasks/          brief · exam · english · radar · selfupdate
 ├── answers.py      모범답안 로딩 + A4 분량 계산
+├── figures.py      SVG 도해 생성기 (구조도 Fig · 선도 Plot)
 └── data/
     ├── exam_deck.yaml      120문항 · 11개 분야
     ├── english_deck.yaml   말하기 54 + 표현 80
-    └── answers/            모범답안 전문 (A4 3~4장, 도표·도해 포함)
+    └── answers/            모범답안 전문 (A4 3~4장)
+        └── figures/        벡터 도해 SVG (tools/build_figures.py 로 생성)
 ```
