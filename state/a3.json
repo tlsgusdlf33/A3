@@ -1,6 +1,16 @@
 {
  "cards": {
   "english": {
+   "e002": {
+    "due": "2026-09-28",
+    "ease": 2.5,
+    "id": "e002",
+    "interval": 0,
+    "lapses": 0,
+    "last": null,
+    "reps": 0,
+    "served": "2026-09-21"
+   },
    "e005": {
     "due": "2026-09-27",
     "ease": 2.5,
@@ -20,6 +30,36 @@
     "last": null,
     "reps": 0,
     "served": "2026-09-20"
+   },
+   "e032": {
+    "due": "2026-09-28",
+    "ease": 2.5,
+    "id": "e032",
+    "interval": 0,
+    "lapses": 0,
+    "last": null,
+    "reps": 0,
+    "served": "2026-09-21"
+   },
+   "e049": {
+    "due": "2026-09-28",
+    "ease": 2.5,
+    "id": "e049",
+    "interval": 0,
+    "lapses": 0,
+    "last": null,
+    "reps": 0,
+    "served": "2026-09-21"
+   },
+   "e051": {
+    "due": "2026-09-28",
+    "ease": 2.5,
+    "id": "e051",
+    "interval": 0,
+    "lapses": 0,
+    "last": null,
+    "reps": 0,
+    "served": "2026-09-21"
    },
    "e056": {
     "due": "2026-09-27",
@@ -51,6 +91,16 @@
     "reps": 0,
     "served": "2026-09-20"
    },
+   "o019": {
+    "due": "2026-09-28",
+    "ease": 2.5,
+    "id": "o019",
+    "interval": 0,
+    "lapses": 0,
+    "last": null,
+    "reps": 0,
+    "served": "2026-09-21"
+   },
    "o025": {
     "due": "2026-09-27",
     "ease": 2.5,
@@ -70,6 +120,58 @@
     "last": null,
     "reps": 0,
     "served": "2026-09-20"
+   },
+   "o034": {
+    "due": "2026-09-28",
+    "ease": 2.5,
+    "id": "o034",
+    "interval": 0,
+    "lapses": 0,
+    "last": null,
+    "reps": 0,
+    "served": "2026-09-21"
+   },
+   "o059": {
+    "due": "2026-09-28",
+    "ease": 2.5,
+    "id": "o059",
+    "interval": 0,
+    "lapses": 0,
+    "last": null,
+    "reps": 0,
+    "served": "2026-09-21"
+   }
+  },
+  "exam": {
+   "076": {
+    "due": "2026-09-28",
+    "ease": 2.5,
+    "id": "076",
+    "interval": 0,
+    "lapses": 0,
+    "last": null,
+    "reps": 0,
+    "served": "2026-09-21"
+   },
+   "103": {
+    "due": "2026-09-28",
+    "ease": 2.5,
+    "id": "103",
+    "interval": 0,
+    "lapses": 0,
+    "last": null,
+    "reps": 0,
+    "served": "2026-09-21"
+   },
+   "114": {
+    "due": "2026-09-28",
+    "ease": 2.5,
+    "id": "114",
+    "interval": 0,
+    "lapses": 0,
+    "last": null,
+    "reps": 0,
+    "served": "2026-09-21"
    }
   }
  },
@@ -77,6 +179,24 @@
  "runs": [
   {
    "at": "2026-09-20T11:06:37+09:00",
+   "ok": true,
+   "summary": "말하기 2 · 표현 5",
+   "task": "english"
+  },
+  {
+   "at": "2026-09-21T09:13:53+09:00",
+   "ok": true,
+   "summary": "브리핑 발송",
+   "task": "brief"
+  },
+  {
+   "at": "2026-09-21T09:13:53+09:00",
+   "ok": true,
+   "summary": "3문제 출제 (103, 114, 076)",
+   "task": "exam"
+  },
+  {
+   "at": "2026-09-21T09:13:53+09:00",
    "ok": true,
    "summary": "말하기 2 · 표현 5",
    "task": "english"
