@@ -31,6 +31,26 @@
     "reps": 0,
     "served": "2026-09-20"
    },
+   "e020": {
+    "due": "2026-09-29",
+    "ease": 2.5,
+    "id": "e020",
+    "interval": 0,
+    "lapses": 0,
+    "last": null,
+    "reps": 0,
+    "served": "2026-09-22"
+   },
+   "e029": {
+    "due": "2026-09-29",
+    "ease": 2.5,
+    "id": "e029",
+    "interval": 0,
+    "lapses": 0,
+    "last": null,
+    "reps": 0,
+    "served": "2026-09-22"
+   },
    "e032": {
     "due": "2026-09-28",
     "ease": 2.5,
@@ -80,6 +100,36 @@
     "last": null,
     "reps": 0,
     "served": "2026-09-20"
+   },
+   "e059": {
+    "due": "2026-09-29",
+    "ease": 2.5,
+    "id": "e059",
+    "interval": 0,
+    "lapses": 0,
+    "last": null,
+    "reps": 0,
+    "served": "2026-09-22"
+   },
+   "o002": {
+    "due": "2026-09-29",
+    "ease": 2.5,
+    "id": "o002",
+    "interval": 0,
+    "lapses": 0,
+    "last": null,
+    "reps": 0,
+    "served": "2026-09-22"
+   },
+   "o006": {
+    "due": "2026-09-29",
+    "ease": 2.5,
+    "id": "o006",
+    "interval": 0,
+    "lapses": 0,
+    "last": null,
+    "reps": 0,
+    "served": "2026-09-22"
    },
    "o017": {
     "due": "2026-09-27",
@@ -131,6 +181,16 @@
     "reps": 0,
     "served": "2026-09-21"
    },
+   "o047": {
+    "due": "2026-09-29",
+    "ease": 2.5,
+    "id": "o047",
+    "interval": 0,
+    "lapses": 0,
+    "last": null,
+    "reps": 0,
+    "served": "2026-09-22"
+   },
    "o059": {
     "due": "2026-09-28",
     "ease": 2.5,
@@ -140,9 +200,49 @@
     "last": null,
     "reps": 0,
     "served": "2026-09-21"
+   },
+   "o069": {
+    "due": "2026-09-29",
+    "ease": 2.5,
+    "id": "o069",
+    "interval": 0,
+    "lapses": 0,
+    "last": null,
+    "reps": 0,
+    "served": "2026-09-22"
    }
   },
   "exam": {
+   "004": {
+    "due": "2026-09-29",
+    "ease": 2.5,
+    "id": "004",
+    "interval": 0,
+    "lapses": 0,
+    "last": null,
+    "reps": 0,
+    "served": "2026-09-22"
+   },
+   "021": {
+    "due": "2026-09-29",
+    "ease": 2.5,
+    "id": "021",
+    "interval": 0,
+    "lapses": 0,
+    "last": null,
+    "reps": 0,
+    "served": "2026-09-22"
+   },
+   "058": {
+    "due": "2026-09-29",
+    "ease": 2.5,
+    "id": "058",
+    "interval": 0,
+    "lapses": 0,
+    "last": null,
+    "reps": 0,
+    "served": "2026-09-22"
+   },
    "076": {
     "due": "2026-09-28",
     "ease": 2.5,
@@ -206,6 +306,24 @@
    "ok": true,
    "summary": "신규 3건",
    "task": "radar"
+  },
+  {
+   "at": "2026-09-22T09:48:42+09:00",
+   "ok": true,
+   "summary": "브리핑 발송",
+   "task": "brief"
+  },
+  {
+   "at": "2026-09-22T09:48:42+09:00",
+   "ok": true,
+   "summary": "3문제 출제 (004, 058, 021)",
+   "task": "exam"
+  },
+  {
+   "at": "2026-09-22T09:48:42+09:00",
+   "ok": true,
+   "summary": "말하기 2 · 표현 5",
+   "task": "english"
   }
  ],
  "schema": 1,
