@@ -324,6 +324,12 @@
    "ok": true,
    "summary": "말하기 2 · 표현 5",
    "task": "english"
+  },
+  {
+   "at": "2026-09-22T23:39:38+09:00",
+   "ok": true,
+   "summary": "새 항목 없음",
+   "task": "radar"
   }
  ],
  "schema": 1,
