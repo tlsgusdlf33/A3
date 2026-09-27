@@ -464,6 +464,269 @@ def undercarriage():
     return f
 
 
+# ═══════════════════ 014 유압 밸브 ═══════════════════
+
+@fig("014-1")
+def valve_classes():
+    f = Fig(700, 300, "유압 밸브의 3대 분류와 회로상 위치, 제어 대상의 대응")
+    f.text(350, 22, "펌프 → 밸브 → 액추에이터", size=11, opacity=0.6)
+    # 펌프
+    f.circle(62, 150, 22)
+    f.poly([(62, 134), (70, 146), (54, 146)], closed=True, fill="currentColor")
+    f.text(62, 194, "펌프", size=10.5)
+    f.line(84, 150, 118, 150, width=1.6)
+    cols = [
+        (118, "압력 제어", ["릴리프", "리듀싱", "시퀀스", "카운터밸런스"], "힘 (P)", "회로 최고압 제한"),
+        (300, "유량 제어", ["미터인", "미터아웃", "블리드오프"], "속도 (Q)", "교축으로 유량 조절"),
+        (470, "방향 제어", ["4포트 3위치", "스풀식", "파일럿·솔레노이드"], "방향", "유로 전환"),
+    ]
+    for x, title, items, target, note in cols:
+        f.rect(x, 62, 150, 176, r=5, fill=FILL)
+        f.text(x + 75, 84, title, size=12.5, weight=600)
+        f.line(x + 16, 94, x + 134, 94, width=1, opacity=0.35)
+        for i, it in enumerate(items):
+            f.text(x + 75, 114 + i * 18, "· " + it, size=10.5, opacity=0.8)
+        f.text(x + 75, 202, target, size=12, accent=True, weight=700)
+        f.text(x + 75, 222, note, size=9.5, opacity=0.6)
+    f.arrow(268, 150, 296, 150, width=1.6)
+    f.arrow(450, 150, 466, 150, width=1.6)
+    f.arrow(620, 150, 618, 150, width=1.6)
+    f.line(620, 150, 604, 150, width=1.6)
+    f.rect(622, 130, 44, 40, r=2)
+    f.line(644, 130, 644, 170, width=1.6)
+    f.line(644, 150, 684, 150, width=2.4)
+    f.text(650, 200, "액추에이터", size=10.5)
+    f.text(350, 270, "압력은 부하가 만들고, 속도는 유량이 만든다 — 밸브의 역할은 여기서 도출된다",
+           size=11.5, weight=600)
+    f.text(350, 288, "제어 3요소 : 힘 · 속도 · 방향", size=10, opacity=0.6)
+    return f
+
+
+@fig("014-2")
+def flow_control():
+    f = Fig(660, 330, "미터인·미터아웃·블리드오프 회로 구성과 부하 방향에 따른 적용")
+    panels = [
+        (14, "미터인", "액추에이터 입구를 조인다", "저항부하 (밀기)", "붐 상승", True),
+        (234, "미터아웃", "출구를 조여 배압을 만든다", "자중부하 (끌기)", "붐 하강", False),
+        (454, "블리드오프", "잉여유를 탱크로 흘린다", "저항부하", "대유량 회로", True),
+    ]
+    for ox, title, how, load, use, meter_in in panels:
+        f.rect(ox + 6, 44, 192, 208, r=5)
+        f.text(ox + 102, 34, title, size=13, weight=700,
+               accent=(title == "미터아웃"))
+        # 펌프
+        f.circle(ox + 34, 206, 15)
+        f.poly([(ox + 34, 195), (ox + 40, 203), (ox + 28, 203)], closed=True, fill="currentColor")
+        f.text(ox + 34, 240, "P", size=10, opacity=0.6)
+        # 실린더
+        f.rect(ox + 120, 72, 66, 40, r=2)
+        f.line(ox + 153, 72, ox + 153, 112, width=1.6)
+        f.line(ox + 153, 92, ox + 192, 92, width=2.2)
+        f.text(ox + 153, 64, "실린더", size=9.5, opacity=0.6)
+        # 라인
+        f.line(ox + 34, 191, ox + 34, 86, width=1.4)
+        f.line(ox + 34, 86, ox + 118, 86, width=1.4)
+        f.line(ox + 118, 104, ox + 62, 104, width=1.4)
+        f.line(ox + 62, 104, ox + 62, 222, width=1.4)
+        f.line(ox + 62, 222, ox + 96, 222, width=1.4)
+        f.line(ox + 96, 222, ox + 96, 236, width=1.4)
+        f.text(ox + 96, 248, "T", size=10, opacity=0.6)
+        # 교축 위치
+        if title == "미터인":
+            tx, ty = ox + 78, 86
+        elif title == "미터아웃":
+            tx, ty = ox + 90, 104
+        else:
+            tx, ty = ox + 34, 132
+            f.line(ox + 34, 132, ox + 14, 132, accent=True, width=1.4)
+            f.line(ox + 14, 132, ox + 14, 236, accent=True, width=1.4)
+            f.text(ox + 14, 248, "T", size=10, accent=True)
+        f.parts.append(
+            f'<path d="M{tx - 8},{ty - 8} L{tx + 8},{ty + 8} M{tx - 8},{ty + 8} L{tx + 8},{ty - 8}" '
+            f'stroke="{ACCENT}" stroke-width="2.2" fill="none"/>')
+        lx, ly = (tx, ty - 14) if ty < 100 else ((tx + 30, ty + 4) if ty > 120 else (tx, ty + 22))
+        f.text(lx, ly, "교축", size=10, accent=True, weight=600,
+               anchor="start" if ty > 120 else "middle")
+        f.text(ox + 102, 272, how, size=10, opacity=0.75)
+        f.text(ox + 102, 292, load, size=11, weight=600,
+               accent=(title == "미터아웃"))
+        f.text(ox + 102, 310, use, size=10, opacity=0.6)
+    f.text(330, 326, "자중부하에서 미터인을 쓰면 로드측 진공 → 캐비테이션 → 자주낙하",
+           size=10.5, accent=True, weight=600)
+    return f
+
+
+@fig("014-3")
+def ls_circuit():
+    p = Plot(600, 320, "오픈센터·클로즈드센터·부하감응 회로의 동력 손실 비교",
+             xlim=(0, 100), ylim=(0, 105),
+             xlabel="부하율 (%)", ylabel="펌프 소비동력 (%)")
+    p.axes([0, 20, 40, 60, 80, 100], [0, 25, 50, 75, 100])
+    # 유효 동력 = 부하율에 비례
+    p.curve([(0, 0), (50, 50), (100, 100)], dash="4 3", width=1.4)
+    p.text(p.X(86), p.Y(78), "유효 동력", size=10.5, opacity=0.7, anchor="end")
+    # 오픈센터 : 항상 최대 토출
+    p.curve([(0, 92), (30, 94), (60, 96), (100, 100)], smooth=False)
+    p.text(p.X(22), p.Y(99), "오픈센터 (OC)", size=11, weight=600, anchor="start")
+    # 클로즈드센터
+    p.curve([(0, 42), (30, 58), (60, 76), (100, 100)], smooth=False)
+    p.text(p.X(40), p.Y(64), "클로즈드센터 (CC)", size=10.5, anchor="start", opacity=0.85)
+    # 부하감응
+    p.curve([(0, 10), (30, 40), (60, 68), (100, 100)], accent=True, smooth=False)
+    p.text(p.X(34), p.Y(30), "부하감응 (LS)", size=11.5, accent=True,
+           weight=700, anchor="start")
+    p.parts.append(
+        f'<rect x="{p.X(10)}" y="{p.Y(92)}" width="{p.X(20) - p.X(10)}" '
+        f'height="{p.Y(25) - p.Y(92)}" fill="{ACCENT}" opacity="0.12"/>')
+    p.dot(15, 92, "", accent=False)
+    p.dot(15, 25, "")
+    p.text(p.X(24), p.Y(80), "이 차이가 열로 버려진다", size=11, accent=True,
+           weight=600, anchor="start")
+    p.text(p.X(96), p.Y(10), "LS : 연비 10~20% 개선", size=11.5, anchor="end", weight=700)
+    return p
+
+
+# ═══════════════════ 019 유압 실린더 ═══════════════════
+
+@fig("019-1")
+def cylinder():
+    f = Fig(660, 320, "복동 실린더의 구조와 헤드측·로드측 면적차에 의한 추력·속도 차이")
+    # 본체
+    f.rect(90, 96, 400, 104, r=4)
+    f.rect(94, 100, 392, 96, r=2, fill=FILL, width=0)
+    # 피스톤
+    f.rect(292, 100, 26, 96, r=1, fill="currentColor", width=0)
+    # 로드
+    f.line(318, 148, 588, 148, width=7)
+    f.rect(484, 132, 18, 32, r=2)
+    f.text(493, 122, "로드 패킹", size=9, opacity=0.6)
+    f.rect(470, 128, 12, 40, r=2, dash="2 2", width=1)
+    f.text(458, 120, "와이퍼", size=9, opacity=0.6, anchor="end")
+    # 포트
+    f.arrow(60, 124, 88, 124, accent=True, width=2)
+    f.text(56, 118, "압유", size=10, anchor="end", accent=True)
+    f.arrow(516, 176, 544, 176, width=1.6)
+    f.text(548, 180, "→ 탱크", size=10, anchor="start", opacity=0.7)
+    f.line(490, 176, 516, 176, width=1.6)
+    # 면적 표시
+    f.line(140, 100, 140, 196, dash="3 3", width=1, opacity=0.55)
+    f.text(190, 128, "헤드측 A₁ = πD²/4", size=11.5, weight=600)
+    f.text(190, 146, "면적 大 → 추력 大, 속도 小", size=10, opacity=0.7)
+    f.line(400, 100, 400, 140, dash="3 3", width=1, opacity=0.55)
+    f.line(400, 156, 400, 196, dash="3 3", width=1, opacity=0.55)
+    f.text(400, 178, "로드측 A₂ = π(D²−d²)/4", size=11, weight=600, accent=True)
+    # 치수
+    f.line(70, 96, 70, 200, width=1, opacity=0.5)
+    f.arrow(70, 148, 70, 98, width=1)
+    f.arrow(70, 148, 70, 198, width=1)
+    f.text(62, 152, "D", size=12, anchor="end", weight=600)
+    f.line(560, 132, 560, 164, width=1, opacity=0.5)
+    f.text(568, 152, "d", size=12, anchor="start", weight=600)
+    f.text(330, 62, "F = P · A          v = Q / A", size=14, weight=700)
+    f.text(330, 80, "추력은 면적에 비례, 속도는 면적에 반비례", size=10.5, opacity=0.65)
+    f.text(330, 244, "D=120 · d=70 · P=32 MPa · Q=150 ℓ/min 일 때", size=11, opacity=0.7)
+    f.text(180, 268, "전진  362 kN · 0.221 m/s", size=12, weight=600)
+    f.text(480, 268, "후진  239 kN · 0.335 m/s", size=12, weight=600, accent=True)
+    f.text(330, 292, "면적비 1.52 : 1  →  힘이 큰 쪽은 느리고, 빠른 쪽은 약하다",
+           size=11.5, weight=600)
+    return f
+
+
+@fig("019-2")
+def rod_ratio():
+    p = Plot(600, 320, "로드 지름비 d/D 에 따른 후진 추력과 속도의 변화",
+             xlim=(0.3, 0.8), ylim=(0, 200),
+             xlabel="로드 지름비 d / D", ylabel="전진 대비 비율 (%)")
+    p.axes([0.3, 0.4, 0.5, 0.6, 0.7, 0.8], [0, 50, 100, 150, 200],
+           xfmt=lambda v: f"{v:.1f}")
+    p.band(0.55, 0.65)
+    # 후진 추력비 = 1 - (d/D)^2
+    thrust = [(r, (1 - r * r) * 100) for r in [0.3, 0.4, 0.5, 0.6, 0.7, 0.8]]
+    p.curve(thrust, accent=True)
+    p.text(p.X(0.36), p.Y(84), "후진 추력비", size=11.5, accent=True,
+           weight=600, anchor="start")
+    # 후진 속도비 = 1 / (1 - (d/D)^2)
+    speed = [(r, 100 / (1 - r * r)) for r in [0.3, 0.4, 0.5, 0.6, 0.7, 0.75]]
+    p.curve(speed)
+    p.text(p.X(0.63), p.Y(178), "후진 속도비", size=11.5, weight=600, anchor="end")
+    p.line(p.pl, p.Y(100), p.w - p.pr, p.Y(100), dash="4 3", width=1, opacity=0.45)
+    p.text(p.X(0.6), p.Y(18), "건설기계 통상 범위", size=11, accent=True, weight=600)
+    p.text(p.X(0.6), p.Y(8), "0.55 ~ 0.65", size=11, accent=True, weight=600)
+    p.dot(0.6, 64, "64%", dx=12, dy=4, anchor="start")
+    p.text(p.X(0.78), p.Y(42), "로드를 굵게 하면", size=10, anchor="end", opacity=0.7)
+    p.text(p.X(0.78), p.Y(32), "좌굴에 강해지나", size=10, anchor="end", opacity=0.7)
+    p.text(p.X(0.78), p.Y(22), "후진 추력은 준다", size=10, anchor="end", opacity=0.7)
+    return p
+
+
+# ═══════════════════ 022 디젤 vs 가솔린 ═══════════════════
+
+@fig("022-1")
+def pv_diagram():
+    f = Fig(660, 330, "정적(오토)·정압(디젤) 사이클의 P-V 선도 비교")
+    for ox, title, comp, kind in ((20, "오토 사이클 (가솔린)", "압축비 ε = 10", "정적"),
+                                  (350, "디젤 사이클 (건설기계)", "압축비 ε = 20", "정압")):
+        # 축
+        f.line(ox + 56, 44, ox + 56, 240, width=1.4)
+        f.line(ox + 56, 240, ox + 290, 240, width=1.4)
+        f.text(ox + 290, 262, "체적 V", size=10.5, anchor="end", opacity=0.75)
+        f.text(ox + 40, 40, "압력 P", size=10.5, anchor="start", opacity=0.75)
+        f.text(ox + 173, 26, title, size=12.5, weight=600, accent=(kind == "정압"))
+        acc = kind == "정압"
+        if kind == "정적":
+            # 1-2 단열압축, 2-3 정적가열, 3-4 단열팽창, 4-1 정적방열
+            f.path(f"M{ox+250},{240-14} C{ox+180},{240-30} {ox+120},{240-70} {ox+96},{240-118}",
+                   width=2)
+            f.line(ox + 96, 240 - 118, ox + 96, 240 - 186, accent=True, width=2.6)
+            f.text(ox + 108, 240 - 168, "2→3 정적가열", size=9.5, anchor="start",
+                   accent=True, weight=600)
+            f.path(f"M{ox+96},{240-186} C{ox+140},{240-120} {ox+200},{240-56} {ox+250},{240-40}",
+                   width=2)
+            f.line(ox + 250, 240 - 40, ox + 250, 240 - 14, width=1.6, dash="3 3")
+        else:
+            f.path(f"M{ox+250},{240-14} C{ox+170},{240-34} {ox+108},{240-86} {ox+86},{240-160}",
+                   width=2)
+            f.line(ox + 86, 240 - 160, ox + 148, 240 - 160, accent=True, width=2.6)
+            f.text(ox + 117, 240 - 170, "2→3 정압가열", size=9.5, accent=True, weight=600)
+            f.path(f"M{ox+148},{240-160} C{ox+186},{240-108} {ox+216},{240-58} {ox+250},{240-40}",
+                   width=2)
+            f.line(ox + 250, 240 - 40, ox + 250, 240 - 14, width=1.6, dash="3 3")
+        f.text(ox + 173, 284, comp, size=11, weight=600)
+        eff = "이론 열효율 약 60%" if kind == "정적" else "이론 열효율 약 65%"
+        f.text(ox + 173, 302, eff, size=10.5, opacity=0.75)
+        f.text(ox + 173, 320, "실제 25~35%" if kind == "정적" else "실제 40~45%",
+               size=11, accent=acc, weight=600)
+    f.line(336, 44, 336, 268, width=1, opacity=0.22, dash="4 4")
+    f.text(193, 44, "노킹 때문에 압축비 12 이상 불가", size=9.5, opacity=0.62)
+    f.text(523, 44, "공기만 압축 → 노킹 제약 없음", size=9.5, opacity=0.62)
+    return f
+
+
+@fig("022-2")
+def torque_compare():
+    p = Plot(620, 330, "회전수에 따른 토크 특성 비교와 건설기계 상용 운전 영역",
+             xlim=(500, 6000), ylim=(0, 120),
+             xlabel="엔진 회전수 (rpm)", ylabel="최대토크 대비 (%)")
+    p.axes([1000, 2000, 3000, 4000, 5000, 6000], [0, 25, 50, 75, 100],
+           xfmt=lambda v: f"{v // 1000}k")
+    p.band(1000, 2200)
+    p.curve([(700, 82), (1000, 94), (1400, 100), (1800, 97), (2200, 88), (2500, 74)],
+            accent=True)
+    p.text(p.X(1250), p.Y(113), "디젤", size=12.5, accent=True, weight=700)
+    p.text(p.X(1250), p.Y(105), "저속 대토크", size=10, accent=True)
+    p.curve([(900, 48), (1500, 62), (2500, 78), (3500, 94), (4200, 100),
+             (5000, 93), (6000, 76)], dash="6 4")
+    p.text(p.X(4200), p.Y(115), "가솔린", size=12, weight=600)
+    p.text(p.X(4200), p.Y(107), "고속에서 최대", size=10, opacity=0.7)
+    p.text(p.X(1600), p.Y(16), "건설기계 상용 영역", size=11, accent=True, weight=600)
+    p.text(p.X(1600), p.Y(7), "1,000 ~ 2,200 rpm · 최대토크 1,400 rpm", size=10, accent=True)
+    p.dot(1400, 100, "")
+    p.text(p.X(5700), p.Y(40), "굴착·견인은", size=10, anchor="end", opacity=0.75)
+    p.text(p.X(5700), p.Y(30), "저속에서 최대 힘이", size=10, anchor="end", opacity=0.75)
+    p.text(p.X(5700), p.Y(20), "필요하다", size=10, anchor="end", opacity=0.75)
+    return p
+
+
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     for name, f in sorted(FIGURES.items()):
